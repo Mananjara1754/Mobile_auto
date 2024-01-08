@@ -1,0 +1,209 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+.tr-image{
+    border: solid;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+.tr{
+    width: auto;
+    color: #1E2059;
+    padding: 18px 0px;
+}
+td{
+    width: 1000px;
+}
+
+ion-toolbar{
+    --background: none;
+    background-color: #fff;
+    border: none;
+}
+.en-Tete{
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+}
+.en-Tete img{
+    width: 160px;
+}
+.menu{
+    width: 10%;
+    justify-content: center;
+    color: #1E2059;
+    // margin-left: 4%;
+}
+.menu ion-icon{
+    font-size: xx-large;
+    color: #1E2059;
+}
+ion-menu-button{
+    font-size: xx-large;
+    color: #1E2059;
+}
+ion-content{
+    --background:none;
+    background-color: #fff;
+    // width: 100%;
+    // margin: 0;
+    // padding: 0;
+    position: relative;
+    
+}
+.titre{
+    color: black;
+    text-align: center;
+    background-color: #fff;
+    height: 200px;
+    border: none;
+    width: 100%;
+    padding: 15px 47px;
+    top: 195px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+
+    --background:none;
+    background-image: url('../../assets/img/fond.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+
+.titre #m-titre{
+    font-weight: bold;
+    font-size: 24px;
+}
+.titre #s-titre{
+    font-size: smaller;
+}
+.categorie{
+    width: 500px;
+    border: outset;
+    height:100px;
+    overflow: auto;
+    white-space: nowrap;
+}
+.categorie mat-chip-listbox mat-chip{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    
+  }
+  
+  div.scrollmenu span {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 5px;
+  }
+  
+  div.scrollmenu a:hover {
+    background-color: #777;
+  }
+.sponsor{
+overflow: auto;
+white-space: nowrap;
+padding: 12px 0;
+}
+
+.sponsor .annonce{
+    width: 100%;
+    height: 260px;
+    box-shadow:  5px 5px 5px #bebebe,
+             -5px -5px 5px #ffffff;
+    border-radius: 25px;
+
+    display: inline-block;
+    margin-left: 10px;
+    white-space: normal;
+}
+@media screen and (min-width: 500px) {
+    .sponsor .annonce{
+        width: 60%;
+        height: 365px;
+        box-shadow:  5px 5px 5px #bebebe,
+                 -5px -5px 5px #ffffff;
+        border-radius: 25px;
+        display: inline-block;
+        margin-left: 20px;
+        white-space: normal;
+    }
+}
+.demande{
+    height: 600px;
+    text-align: center;
+}
+.demande .image{
+height: 250px;
+--background:none;
+background-image: url('../../assets/img/demande.svg');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+
+ }
+ .demande .text{
+    color: black;
+    // padding: 20px 0px;
+ }
+ .footer{
+    background-color: #1E2059;
+    height: 150px;
+    top: 1476px;
+    width: 100%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+select option{
+    width: 100%;
+}
+//......
+.card-img{
+    width: 100%;
+    height: 200px;
+    border-radius: 25px 25px 0 0 ;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;    
+}
+.card-categ{
+    width: 120px;
+    height: 20px;
+    color: #FEF218;
+    background-color: #1E2059;
+    margin-top: 147px;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 6px;
+    font-size: small;
+}
+.card-info{
+    color: black;
+    padding: 0px 20px;
+    margin-top: 8px;
+}
+.card-info #card-titre{
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+#card-footer{
+    color: black;
+    padding: 0px 20px;
+}

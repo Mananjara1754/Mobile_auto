@@ -1,0 +1,26 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="menu" [routerLink]="['/accueil']">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-buttons>
+    <div class="en-Tete">
+      <img src="../../assets/img/logo.png" alt="">
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="image">
+    <div class="row" id="recherche">
+      <div class="col-10" id="input">
+        <ion-searchbar placeholder="Recherche"></ion-searchbar>
+      </div>
+      <div class="col-2">
+        <ion-icon name="options-outline"></ion-icon>
+      </div>
+    </div>
+
+  </div>
+  
+</ion-content>

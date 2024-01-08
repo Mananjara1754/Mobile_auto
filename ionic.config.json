@@ -1,0 +1,8 @@
+{
+  "name": "kotrana",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

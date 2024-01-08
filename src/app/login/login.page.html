@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true" style="overflow: hidden;" class="body">
+  <div class="content" style="height: 100%;">
+    <div class="titre">
+      <img src="../../assets/img/logo1.png" alt="" style="width: 150px;" srcset=""><br>
+      <div class="sousTitre">
+        <p>Veuillez entrer votre adresse E-Mail et mot de passe</p>
+      </div>
+    </div>
+    <div class="contenu0">
+      <div class="contains">
+        <h3>Login</h3>
+        <br>
+        <form action="" class="row g-3 needs-validation" novalidate method="post">
+            <div>
+              <label for="yourUsername" class="form-label">Nom de l'utilisateur</label>
+              <div class="input-group has-validation">
+                <input type="text" name="utilisateur" class="form-control" id="yourUsername" required>
+                <div class="invalid-feedback">veuillez entrer votre Nom utilisateur.</div>
+              </div>
+            </div>
+              <div>
+              <label for="yourPassword" class="form-label">Mot de Passe</label>
+              <input type="password" name="mdp" class="form-control" id="yourPassword" required>
+              <div class="invalid-feedback">Veuillez entrer votre mot de passe</div>
+            </div>
+            <div>
+              <br>
+              <input class="btn btn-primary w-100" [routerLink]="['/accueil']"  type="submit" value="Se connecter" style="background-color: #1A1313;border:none;">
+            </div>
+        </form>
+        <!-- <a href="" [routerLink]="['/login']" class="btn btn-primary" id="log" style="background-color: #1A1313;">Login</a><br> -->
+
+      </div>
+    </div>
+  </div>
+</ion-content>

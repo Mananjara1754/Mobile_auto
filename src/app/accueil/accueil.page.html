@@ -1,0 +1,71 @@
+
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar style="border:none;">
+      <ion-title style="color: #1E2059;">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-button (click)="add()">...</ion-button>
+    <ion-button  [routerLink]="['/login']" *ngIf="!utilisateurEstAdmin()">Se connecter</ion-button>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="en-Tete">
+        <img src="../../assets/img/dark_logo.png" alt="">
+      </div>
+      <ion-buttons slot="end" class="menu" [routerLink]="['/recherche']">
+        <ion-icon name="search"></ion-icon>
+      </ion-buttons>
+      <ion-buttons slot="end" class="menu">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="choix" *ngIf="utilisateurEstAdmin()" style="color: black;margin-top: 200px;">
+    <ul>
+
+      <li><a href="">Termine</a></li>
+      <li><a href="">Pubs rejete</a></li>
+    </ul>
+  </div>
+  <div class="titre" *ngIf="!utilisateurEstAdmin()">
+    <p id="m-titre">Savoir les statistiques de vos matchs</p>
+    <p id="s-titre">Trouvez rapidement les statistiques de vos équipes preferées</p>
+  </div>
+  <div style="margin-top: 100px;"*ngIf="!utilisateurEstAdmin()">
+   
+    <!-- <p style="color: black;font-size: larger;font-weight: 600;">s</p> -->
+    <div class="sponsor">
+        <ng-container *ngFor="let equipe of equipe">
+          <div class="annonce" (click)="vers_detail(50)">
+            <!-- ... -->
+            <div class="card-img" style="background-image: url('../../assets/img/logo.png');">
+            </div>
+            <div class="card-info">
+              <p id="card-titre">{{equipe.nom_equipe}}</p>
+            </div>
+            <!-- ... -->
+          </div>
+        </ng-container>
+    </div>
+    
+    <br>
+    <!-- <div class="footer">
+      Nba ITU Express - 2023 - Tous droits réservés
+    </div> -->
+  </div>
+  
+ 
+
+
+</div>
+
+
+
+

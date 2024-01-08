@@ -1,0 +1,43 @@
+#log{
+  width: 90%;
+  margin-left: 5%;
+  height: 48px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  border:none;
+}
+.titre{
+  padding: 50px 8%;
+}
+.sousTitre{
+  color:#FAF4F4;
+  font-size: medium;
+  font-weight: 900;
+}
+   .body {
+     --background: url('../../assets/img/fond.jpg') center left / cover no-repeat fixed;
+     position: absolute;
+     top:0;
+     right:0;
+     bottom: 0;
+     left:0;
+   }
+ ion-toolbar{
+   --background:linear-gradient(90deg,#FFA45E,#FF9B4F);
+   --border-width: 0 0 0px;
+ }
+ .container{
+   height: 50%;
+   overflow: auto;
+ }
+ .music{
+   box-shadow: 5px 5px 10px #d28448;
+   width: 90%;
+   margin-left: 5%;
+   border-radius: 20px;
+   height: 26%;
+   margin-top: 4%;
+   display: flex;
+ }

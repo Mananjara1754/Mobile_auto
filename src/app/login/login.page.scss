@@ -1,0 +1,40 @@
+
+.body {
+  --background: none;
+}
+.titre{
+  height: 45%;
+  padding: 50px 8%;
+  background-image: url('../../assets/img/login.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  top:0;
+  right:0;
+  bottom: 0;
+  left:0;
+}
+.contenu0{
+    background-color: white;
+    margin-top: -30px;
+    border-radius: 36px;
+    width: 100%;
+  .contains{
+   color:#1A1313; 
+   padding: 30px 8%;
+   font-weight: 900;
+   h3{
+    font-weight: 900;
+    letter-spacing: 2px;
+   }
+   label{
+    font-weight: 100;
+    font-size: smaller;
+    opacity: 0.79;
+   }
+   input{
+    border-radius: 20px;
+   }
+  }
+  
+}
