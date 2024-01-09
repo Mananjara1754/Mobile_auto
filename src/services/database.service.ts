@@ -3,7 +3,7 @@ import * as localforage from 'localforage';
 @Injectable({
   providedIn: 'root'
 })
-
+ 
 export class DatabaseService {
   private db: any; // Use 'any' type for LocalForage instance
 
