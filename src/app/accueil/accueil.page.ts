@@ -1,12 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.page.html',
-  styleUrls: ['./accueil.page.scss'],
+  styleUrls: ['./accueil.page.scss']
 })
 export class AccueilPage implements OnInit {
 
@@ -33,6 +32,7 @@ export class AccueilPage implements OnInit {
   getAllAnnonce() {
     
   }
+
 
   fetchAndStoreAnnoncesValides() {
     

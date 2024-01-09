@@ -28,17 +28,32 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
   <div class="container" style="margin-top: 10px;">
-    <div class="row" id="recherche">
-      <div class="col-10">
-        <ion-searchbar id="input" placeholder="Recherche"></ion-searchbar>
-      </div>
-      <div class="col-2">
-        <ion-icon name="options-outline"></ion-icon>
+    <div class="row">
+      <div class="col-12">
+        <ion-searchbar placeholder="Recherche"></ion-searchbar>
       </div>
     </div>
+  </div><br>
+  <!-- Annonce le plus pertinent -->
+  <div class="annonce" (click)="vers_detail(50)">
+    <div class="card-img" style="border-image:fill 0 linear-gradient(#0001,#000);background-image: url('../../assets/img/fond.jpg');">
+      <h3 class="rand">Voiture de plaisir</h3>
+      <button id="bouton" class="btn btn-primary">Voir detail</button>
+    </div>
   </div>
-
+    <!-- Annonce le plus pertinent -->
+  <p style="color:black">Categorie</p>
+  <div class="scrollmenu">
+      <span class="badge rounded-pill bg-primary">Classe</span>
+      <span class="badge rounded-pill bg-primary">Classe</span>
+      <span class="badge rounded-pill bg-primary">Classe</span>
+      <span class="badge rounded-pill bg-primary">Classe</span>
+      <span class="badge rounded-pill bg-primary">Classe</span>
+      <span class="badge rounded-pill bg-primary">Classe</span>
+   
+  </div>
   <div style="margin-top: 100px;" *ngIf="!utilisateurEstAdmin()">
    
     <!-- <p style="color: black;font-size: larger;font-weight: 600;">s</p> -->
@@ -57,9 +72,6 @@
     </div>
     
     <br>
-    <!-- <div class="footer">
-      Nba ITU Express - 2023 - Tous droits réservés
-    </div> -->
   </div>
   
  
