@@ -1,32 +1,36 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 
+
+
+
 ion-toolbar{
     --background: none;
-    background-color: #fff;
+    background-color: #FCFCFC;
     border: none;
 }
 .en-Tete{
-    width: 83px;
-    text-align: center;
-    background-color: #fff;
+    width: 100%;
+    text-align: left;
+    background-color: #FCFCFC;
 }
 .en-Tete img{
-    width: 160px;
+    width: 83px;
+    margin-left: 20px;
 }
 .menu{
-    width: 10%;
-    justify-content: center;
-    color: #1E2059;
+    width: 37px;
+    justify-content: right;
+    color: #1A1313;
     // margin-left: 4%;
 }
 .menu ion-icon{
-    font-size: xx-large;
-    color: #1E2059;
+    font-size: x-large;
+    color: #1A1313;
 }
 ion-menu-button{
-    font-size: xx-large;
-    color: #1E2059;
+    font-size: x-large;
+    color: #1A1313;
 }
 ion-content{
     --background:none;
@@ -112,18 +116,18 @@ padding: 12px 0;
     margin-left: 10px;
     white-space: normal;
 }
-@media screen and (min-width: 500px) {
-    .sponsor .annonce{
-        width: 60%;
-        height: 365px;
-        box-shadow:  5px 5px 5px #bebebe,
-                 -5px -5px 5px #ffffff;
-        border-radius: 25px;
-        display: inline-block;
-        margin-left: 20px;
-        white-space: normal;
-    }
-}
+// @media screen and (min-width: 500px) {
+//     .sponsor .annonce{
+//         width: 60%;
+//         height: 365px;
+//         box-shadow:  5px 5px 5px #bebebe,
+//                  -5px -5px 5px #ffffff;
+//         border-radius: 25px;
+//         display: inline-block;
+//         margin-left: 20px;
+//         white-space: normal;
+//     }
+// }
 .demande{
     height: 600px;
     text-align: center;
@@ -190,3 +194,24 @@ select option{
     color: black;
     padding: 0px 20px;
 }
+#input{
+    color: black;
+    background-color: white;
+    box-shadow: none;
+    border: 0.1px solid #e5e5e5;
+}
+/* my-component.scss */
+
+ion-searchbar {
+    --height:10px;
+    --background: white;
+    --color: black;
+    --border-width: 0.1px;
+    --border-color: #e5e5e5;
+    --box-shadow: none;
+  }
+  
+  .options-icon {
+    color: black;
+  }
+  
