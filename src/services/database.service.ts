@@ -13,6 +13,8 @@ export class DatabaseService {
   }
   
 
+  
+
   private async initDatabase() {
     try {
       this.db = await localforage.createInstance({
