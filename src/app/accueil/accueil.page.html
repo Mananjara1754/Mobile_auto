@@ -6,8 +6,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-button (click)="add()">...</ion-button>
-    <ion-button  [routerLink]="['/login']" *ngIf="!utilisateurEstAdmin()">Se connecter</ion-button>
+    
   </ion-content>
 </ion-menu>
 
@@ -43,38 +42,101 @@
       <button id="bouton" class="btn btn-primary">Voir detail</button>
     </div>
   </div>
-    <!-- Annonce le plus pertinent -->
-  <p style="color:black">Categorie</p>
-  <div class="scrollmenu">
-      <span class="badge rounded-pill bg-primary">Classe</span>
-      <span class="badge rounded-pill bg-primary">Classe</span>
-      <span class="badge rounded-pill bg-primary">Classe</span>
-      <span class="badge rounded-pill bg-primary">Classe</span>
-      <span class="badge rounded-pill bg-primary">Classe</span>
-      <span class="badge rounded-pill bg-primary">Classe</span>
-   
-  </div>
-  <div style="margin-top: 100px;" *ngIf="!utilisateurEstAdmin()">
-   
-    <!-- <p style="color: black;font-size: larger;font-weight: 600;">s</p> -->
-    <div class="sponsor">
-        <ng-container *ngFor="let equipe of equipe">
-          <div class="annonce" (click)="vers_detail(50)">
-            <!-- ... -->
-            <div class="card-img" style="background-image: url('../../assets/img/logo.png');">
-            </div>
-            <div class="card-info">
-              <p id="card-titre">{{equipe.nom_equipe}}</p>
-            </div>
-            <!-- ... -->
-          </div>
-        </ng-container>
+  <!-- Annonce le plus pertinent -->
+  <!-- Marque -->
+  <div class="container" id="categorie">
+    <p style="color:black" class="titre_categ">Marque</p>
+    <div class="scrollmenu">
+        <span class="badge rounded-pill">Classe</span>
+        <span class="badge rounded-pill">Classe</span>
+        <span class="badge rounded-pill">Classe</span>
+        <span class="badge rounded-pill">Classe</span>
+        <span class="badge rounded-pill">Classe</span>
+        <span class="badge rounded-pill">Classe</span>
     </div>
-    
-    <br>
+  </div> <br>
+  <!-- Marque -->
+<!-- Listee plus pertinent -->
+  <div class="container">
+    <p style="color:black" class="titre_categ">Le plus pertinent</p>
+    <div class="sponsor">
+      <!-- ................................... -->
+      <div class="annonces">
+        <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+        <div class="card-info">
+          <div  id="card-titre">
+            <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
+            <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
+            <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
+            <p class="prix">10 900 ar</p>
+          </div>          
+        </div>
+      </div>
+      <!-- ................................... -->
+      <!-- ................................... -->
+      <div class="annonces">
+        <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+        <div class="card-info">
+          <div  id="card-titre">
+            <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
+            <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
+            <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
+            <p class="prix">10 900 ar</p>
+          </div>          
+        </div>
+      </div>
+      <!-- ................................... -->
+    </div>
   </div>
-  
- 
+<!-- Listee plus pertinent -->
+
+<!-- nouveau -->
+<div class="container">
+  <p style="color:black" class="titre_categ">Recemment ajoutes</p>
+  <div class="sponsor">
+    <!-- ................................... -->
+    <div class="annonces">
+      <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+      <div class="card-info">
+        <div  id="card-titre">
+          <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
+          <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
+          <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
+          <p class="prix">10 900 ar</p>
+        </div>          
+      </div>
+    </div>
+    <!-- ................................... -->
+    <!-- ................................... -->
+    <div class="annonces">
+      <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+      <div class="card-info">
+        <div  id="card-titre">
+          <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
+          <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
+          <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
+          <p class="prix">10 900 ar</p>
+        </div>          
+      </div>
+    </div>
+    <!-- ................................... -->
+  </div>
+</div>
+<!-- nouveau -->
+<br>
+   <!-- Annonce le plus pertinent -->
+   <div class="annonce">
+    <div class="card-img" style="border-image:fill 0 linear-gradient(#0001,#000);background-image: url('../../assets/img/fond.jpg');">
+      <img class="logo-blanc" src="../../assets/img/logo_simple_white.png" alt="">
+      <p class="pub">Annoncez en toute confiance sur notre plateforme, et le meilleur ? C 'est gratuit ! Démarrez votre aventure vers la vente ou l'achat de voitures sans tracas.
+         Avec nous, chaque annonce est une opportunité sans frais cachés, simplement l'assurance d'une expérience transparente et réussie.</p>
+      <div>
+        <button id="bouton-footer" class="btn btn-primary">Tous les annonces</button>
+        <button id="bouton-footer" style="margin-left: 5px;background-color:black;color:white;" class="btn btn-primary">Creer annonce</button>
+      </div>
+    </div>
+  </div>
+  <!-- Annonce le plus pertinent -->
 
 
 </div>

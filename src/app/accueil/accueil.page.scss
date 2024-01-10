@@ -63,10 +63,23 @@ div.scrollmenu {
   
   div.scrollmenu span {
     display: inline-block;
-    color: white;
     text-align: center;
     text-decoration: none;
     margin-left: 5px;
+    background-color: #fff;
+    color: black;
+    border: 0.1px solid #ccbebe;
+    font-weight: 100;
+  }
+  div.scrollmenu span:active{
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 5px;
+    background-color: #000;
+    color: #fff;
+    border: 0.1px solid #ccbebe;
+    font-weight: 100;
   }
   
   div.scrollmenu a:hover {
@@ -78,29 +91,27 @@ white-space: nowrap;
 padding: 12px 0;
 }
 
-.sponsor .annonce{
-    width: 100%;
-    height: 260px;
-    box-shadow:  5px 5px 5px #bebebe,
-             -5px -5px 5px #ffffff;
-    border-radius: 25px;
+.sponsor .annonces{
+    width: 90%;
+    height: 375px;
+    // box-shadow:  5px 5px 5px #bebebe,
+    //          -5px -5px 5px #ffffff;
 
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 8px;
     white-space: normal;
 }
-// @media screen and (min-width: 500px) {
-//     .sponsor .annonce{
-//         width: 60%;
-//         height: 365px;
-//         box-shadow:  5px 5px 5px #bebebe,
-//                  -5px -5px 5px #ffffff;
-//         border-radius: 25px;
-//         display: inline-block;
-//         margin-left: 20px;
-//         white-space: normal;
-//     }
-// }
+@media screen and (min-width: 500px) {
+    .sponsor .annonces{
+        width: 50%;
+        height: 365px;
+        box-shadow:  5px 5px 5px #bebebe,
+                 -5px -5px 5px #ffffff;
+        display: inline-block;
+        margin-left: 20px;
+        white-space: normal;
+    }
+}
 .demande{
     height: 600px;
     text-align: center;
@@ -153,13 +164,12 @@ select option{
 }
 .card-info{
     color: black;
-    padding: 0px 20px;
+    padding: 0px 9px;
     margin-top: 8px;
 }
 .card-info #card-titre{
-    font-size: large;
-    font-weight: bold;
-    text-align: center;
+    font-size: medium;
+    font-weight: 100;
 }
 #card-footer{
     color: black;
@@ -216,4 +226,66 @@ ion-searchbar {
 }
 #main-content{
     overflow-y: scroll;
+}
+#categorie{
+    margin-top: 115px;
+    width: 100%;
+    border: none;
+}
+
+.card-img-pertinent{
+    width: 100%;
+    height: 226px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+#pertinent{
+    overflow: auto;
+    white-space: nowrap;
+    padding: 12px 0;
+}
+    
+
+.moteur{
+    font-size: x-small;
+    margin-top: -11px;
+    opacity: 0.7;
+}
+.info{
+    font-size: smaller;
+    opacity: 0.8;
+    margin-top: -10px;
+}
+.prix{
+    margin-top: -10px;
+    font-size: smaller;
+}
+.favoris{
+    float: right;
+    font-size: x-large;
+}
+.pub{
+    font-family: "Product-Sans-Regular";
+    top: 57px;
+    position: relative;
+    color: #fff;
+    font-size: small;
+}
+#bouton-footer{
+    background-color: white;
+    color: #1A1313;
+    border: none;
+    border-radius: 26px;
+    font-size: smaller;
+    // width: 100px;
+    top: 66px;
+    position: relative;
+}
+.logo-blanc{
+    width: 43px;
+    position: relative;
+    top: 40px;
 }

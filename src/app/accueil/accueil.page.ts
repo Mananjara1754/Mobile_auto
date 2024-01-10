@@ -11,6 +11,18 @@ export class AccueilPage implements OnInit {
 
   id_equipe:any;
   equipe:any[] = [];
+   // Définissez l'état initial de l'icône et de la couleur
+   etatIcone = 'heart-outline';
+   couleurIcone = 'black';
+ 
+   // Fonction appelée lors du clic sur l'icône
+   onClickIcone() {
+     // Inversez l'état de l'icône
+     this.etatIcone = (this.etatIcone === 'heart-outline') ? 'heart' : 'heart-outline';
+     
+     // Changez la couleur en rouge lorsque l'icône est pleine, sinon en noir
+     this.couleurIcone = (this.etatIcone === 'heart') ? 'red' : 'black';
+   }
   constructor(private router : Router,) {
       this.getAllEquipe();
   }
