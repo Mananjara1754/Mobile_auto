@@ -30,6 +30,14 @@ const routes: Routes = [
   {
     path: 'inscription',
     loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
+  },
+  {
+    path: 'ajout-annonce',
+    loadChildren: () => import('./ajout-annonce/ajout-annonce.module').then( m => m.AjoutAnnoncePageModule)
+  },
+  {
+    path: 'my-annonce',
+    loadChildren: () => import('./my-annonce/my-annonce.module').then( m => m.MyAnnoncePageModule)
   }
 ];
 @NgModule({

@@ -289,3 +289,35 @@ ion-searchbar {
     position: relative;
     top: 40px;
 }
+
+// ----Menu
+
+.menu-header-bg{
+    height: 180px;
+    width:350px;
+    background-color: black;
+    transform: rotate(15deg);
+    border-radius: 10px 10px 10px 50px;
+    margin-left: -18px;
+    margin-top:-50px;
+    margin-bottom:60px;
+}
+
+
+.menu-items{
+    margin: 0px;
+    background-color: transparent;
+    ion-icon{
+        margin-right: 20px;
+        color: #86919f;
+    }
+    ion-item{
+        padding-left: 20px;
+        margin-bottom: 10px;
+        --background: transparent;
+        color: #000;
+    }
+    // ion-item:active{
+    //     background-color: aliceblue;
+    // }
+}

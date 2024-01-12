@@ -5,8 +5,31 @@
       <ion-title style="color: #1E2059;">Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">
-    
+  <ion-content>
+    <ion-list lines="none" class="menu-items">
+      <ion-item [routerLink]="['/accueil']">
+        <ion-icon name="home-outline"></ion-icon> Accueil
+      </ion-item>
+      <ion-item  [routerLink]="['/ajout-annonce']">
+        <ion-icon name="reader-outline"></ion-icon> Faire une annonce
+      </ion-item>
+      <ion-item  [routerLink]="['/my-annonce']">
+        <ion-icon name="exit-outline"></ion-icon> Mes annonces
+      </ion-item>
+      <ion-item  [routerLink]="['/notification']">
+        <ion-icon name="notifications-outline"></ion-icon> Notification
+      </ion-item>
+      <ion-item  [routerLink]="['/favori']">
+        <ion-icon name="heart-outline"></ion-icon> Favori
+      </ion-item>
+      <ion-item  [routerLink]="['/recherche']">
+        <ion-icon name="search-outline"></ion-icon> Recherche
+      </ion-item>
+      <ion-item  [routerLink]="['/accueil']">
+        <ion-icon name="exit-outline"></ion-icon> Déconnexion
+      </ion-item>
+      
+    </ion-list>
   </ion-content>
 </ion-menu>
 
