@@ -1,0 +1,39 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="menu" [routerLink]="['/accueil']">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-buttons>
+    <div class="en-Tete">
+     <p style="color:black">Notification</p>
+    </div>
+    <ion-buttons slot="end" class="menu" >
+      <ion-icon name="chevron-back" style="color: white;"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-list lines="none" class="notification-items">
+      <ion-item>
+        <ion-icon name="mail-unread-outline"></ion-icon>
+        <div class="box-notif">
+          <div class="titre-notif">Vous avez eu un nouveau message</div>
+          <br>
+          <div  class="date-notif">2023-8-9 11:00</div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail-unread-outline"></ion-icon>
+        <div class="box-notif">
+          <div class="titre-notif">Vous avez eu un nouveau message</div>
+          <br>
+          <div  class="date-notif">2023-8-9 11:00</div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+
+
+

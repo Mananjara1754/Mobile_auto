@@ -4,21 +4,65 @@
       <ion-icon name="chevron-back"></ion-icon>
     </ion-buttons>
     <div class="en-Tete">
-      <img src="../../assets/img/logo.png" alt="">
+     <p style="color:black">Recherche</p>
     </div>
-
+    <ion-buttons slot="end" class="menu" >
+      <ion-icon name="chevron-back" style="color: white;"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="image">
-    <div class="row" id="recherche">
-      <div class="col-10" id="input">
-        <ion-searchbar placeholder="Recherche"></ion-searchbar>
+  <div class="container">
+    <form action="">
+      <div id="input">
+        <label for="yourUsername" class="form-label">Voiture</label>
+        <div class="input-group has-validation">
+          <select name="" id="" class="form-control">
+            <option value="">Audi</option>
+            <option value="">Subaru</option>
+          </select>
+        </div>
       </div>
-      <div class="col-2">
-        <ion-icon name="options-outline"></ion-icon>
+      <div class="row" id="input">
+        <div class="col-6">
+          <div>
+            <label for="yourUsername" class="form-label">Kilométrage</label>
+            <div class="input-group has-validation">
+              <input type="number" name="kilometrage"  class="form-control" id="">
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>
+            <label for="yourUsername" class="form-label">Etat sur 10</label>
+            <div class="input-group has-validation">
+              <input type="number" name="kilometrage"  class="form-control" id="">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div id="input">
+        <label for="yourUsername" class="form-label">Description</label>
+        <div class="input-group has-validation">
+          <input type="texte" name="kilometrage"  class="form-control" id="">
+        </div>
+      </div>
+      <div id="input">
+        <label for="yourUsername" class="form-label">Prix de vente</label>
+        <div class="input-group has-validation">
+          <input type="number" name="kilometrage"  class="form-control" id="">
+        </div>
+      </div>
+      <div id="input">
+        <label for="yourUsername" class="form-label">Photo</label>
+        <div class="input-group has-validation">
+          <input type="file" style="font-size: small;" name="kilometrage"  class="form-control" id="">
+        </div>
+      </div>
+      <br>
+      <input type="submit" value="Rechercher" class="btn btn-primary" id="bouton">
+
+    </form>
   </div>
 </ion-content>

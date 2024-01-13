@@ -2,7 +2,7 @@
 <ion-menu side="end" contentId="main-content">
   <ion-header>
     <ion-toolbar style="border:none;">
-      <ion-title style="color: #1E2059;">Menu</ion-title>
+      <ion-title style="color: #12132d;">Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -25,7 +25,7 @@
       <ion-item  [routerLink]="['/recherche']">
         <ion-icon name="search-outline"></ion-icon> Recherche
       </ion-item>
-      <ion-item  [routerLink]="['/accueil']">
+      <ion-item  (click)="deconnecter()">
         <ion-icon name="exit-outline"></ion-icon> Déconnexion
       </ion-item>
       
@@ -70,12 +70,9 @@
   <div class="container" id="categorie">
     <p style="color:black" class="titre_categ">Marque</p>
     <div class="scrollmenu">
-        <span class="badge rounded-pill">Classe</span>
-        <span class="badge rounded-pill">Classe</span>
-        <span class="badge rounded-pill">Classe</span>
-        <span class="badge rounded-pill">Classe</span>
-        <span class="badge rounded-pill">Classe</span>
-        <span class="badge rounded-pill">Classe</span>
+      <ng-container *ngFor="let marque of marques">
+        <span class="badge rounded-pill">{{marque.marque}}</span>
+      </ng-container>
     </div>
   </div> <br>
   <!-- Marque -->
@@ -83,19 +80,22 @@
   <div class="container">
     <p style="color:black" class="titre_categ">Le plus pertinent</p>
     <div class="sponsor">
-      <!-- ................................... -->
-      <div class="annonces">
-        <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
-        <div class="card-info">
-          <div  id="card-titre">
-            <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
-            <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
-            <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
-            <p class="prix">10 900 ar</p>
-          </div>          
+      <ng-container *ngFor="let annonce of annonces">
+        <!-- ................................... -->
+        <div class="annonces">
+          <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+          <div class="card-info">
+            <div  id="card-titre">
+              <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
+              <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
+              <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
+              <p class="prix">10 900 ar</p>
+            </div>          
+          </div>
         </div>
-      </div>
-      <!-- ................................... -->
+        <!-- ................................... -->
+      </ng-container>
+      
       <!-- ................................... -->
       <div class="annonces">
         <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
@@ -154,7 +154,7 @@
       <p class="pub">Annoncez en toute confiance sur notre plateforme, et le meilleur ? C 'est gratuit ! Démarrez votre aventure vers la vente ou l'achat de voitures sans tracas.
          Avec nous, chaque annonce est une opportunité sans frais cachés, simplement l'assurance d'une expérience transparente et réussie.</p>
       <div>
-        <button id="bouton-footer" class="btn btn-primary">Tous les annonces</button>
+        <button id="bouton-footer" class="btn btn-primary"  [routerLink]="['/all-annonce']">Tous les annonces</button>
         <button id="bouton-footer" style="margin-left: 5px;background-color:black;color:white;" class="btn btn-primary">Creer annonce</button>
       </div>
     </div>

@@ -1,0 +1,39 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="menu" [routerLink]="['/accueil']">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-buttons>
+    <div class="en-Tete">
+     <p style="color:black">Favori</p>
+    </div>
+    <ion-buttons slot="end" class="menu" >
+      <ion-icon name="chevron-back" style="color: white;"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+  <div class="container">
+    <!-- <p style="color:black" class="titre_categ">Le plus pertinent</p> -->
+    <div class="sponsor">
+      <!-- ................................... -->
+      <div class="annonces">
+        <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
+          <ion-icon name="heart-dislike" class="favoris"></ion-icon>
+        </div>
+        <div class="card-info">
+          <div  id="card-titre">
+            <p>Suzuki swift</p>
+            <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
+            <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
+            <p class="prix">10 900 ar</p>
+          </div>          
+        </div>
+      </div>
+      <!-- ................................... -->
+    </div>
+  </div>
+</ion-content>
+
+
+

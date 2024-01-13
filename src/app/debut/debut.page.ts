@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-debut',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DebutPage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private route:Router) {
+    this.ngOnInit();
   }
 
+  ngOnInit() {
+    this.tokenExisteDansLocalStorage();
+  }
+  tokenExisteDansLocalStorage(){
+    const token = localStorage.getItem('token');
+    if(token!==null){
+      this.route.navigate(['/accueil']);
+    }
+  }
 }

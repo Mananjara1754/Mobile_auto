@@ -19,7 +19,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { MatTabsModule } from '@angular/material/tabs';
-
 //Dependance de FireBase
 // import { AngularFireModule } from "@angular/fire/compat";
 // import { AngularFireAuthModule } from "@angular/fire/compat/auth";
@@ -57,7 +56,7 @@ registerLocaleData(localeFr);
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatTabsModule,
+    MatTabsModule
   ],
   providers: [
 

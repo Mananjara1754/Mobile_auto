@@ -1,4 +1,12 @@
 <ion-content [fullscreen]="true" style="overflow: hidden;" class="body">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-down"
+      pullingText="Tirer pour rafraîchir"
+      refreshingSpinner="circles"
+      refreshingText="En cours de rafraîchissement...">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="content" style="height: 100%;">
     <div class="titre">
       <img src="../../assets/img/logo1.png" alt="" style="width: 150px;" srcset=""><br>
@@ -10,22 +18,22 @@
       <div class="contains">
         <h3>Login</h3>
         <br>
-        <form action="" class="row g-3 needs-validation" novalidate method="post">
+        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="row g-3 needs-validation" novalidate method="post">
             <div>
               <label for="yourUsername" class="form-label">Nom de l'utilisateur</label>
               <div class="input-group has-validation">
-                <input type="text" name="utilisateur" class="form-control" id="yourUsername" required>
+                <input type="text"  class="form-control" formControlName="email" id="yourUsername" required>
                 <div class="invalid-feedback">veuillez entrer votre Nom utilisateur.</div>
               </div>
             </div>
-              <div>
+            <div>
               <label for="yourPassword" class="form-label">Mot de Passe</label>
-              <input type="password" name="mdp" class="form-control" id="yourPassword" required>
+              <input type="password" class="form-control" id="yourPassword" formControlName="mdp" required>
               <div class="invalid-feedback">Veuillez entrer votre mot de passe</div>
             </div>
             <div>
               <br>
-              <input class="btn btn-primary w-100" [routerLink]="['/accueil']"  type="submit" value="Se connecter" style="background-color: #1A1313;border:none;">
+              <input class="btn btn-primary w-100" type="submit" value="Se connecter" style="background-color: #1A1313;border:none;">
             </div>
         </form>
         <!-- <a href="" [routerLink]="['/login']" class="btn btn-primary" id="log" style="background-color: #1A1313;">Login</a><br> -->

@@ -1,0 +1,72 @@
+
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar style="border:none;">
+      <ion-title style="color: #1E2059;">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list lines="none" class="menu-items">
+      <ion-item [routerLink]="['/accueil']">
+        <ion-icon name="home-outline"></ion-icon> Accueil
+      </ion-item>
+      <ion-item  [routerLink]="['/ajout-annonce']">
+        <ion-icon name="reader-outline"></ion-icon> Faire une annonce
+      </ion-item>
+      <ion-item  [routerLink]="['/my-annonce']">
+        <ion-icon name="exit-outline"></ion-icon> Mes annonces
+      </ion-item>
+      <ion-item  [routerLink]="['/notification']">
+        <ion-icon name="notifications-outline"></ion-icon> Notification
+      </ion-item>
+      <ion-item  [routerLink]="['/favori']">
+        <ion-icon name="heart-outline"></ion-icon> Favori
+      </ion-item>
+      <ion-item  [routerLink]="['/recherche']">
+        <ion-icon name="search-outline"></ion-icon> Recherche
+      </ion-item>
+      <ion-item  [routerLink]="['/accueil']">
+        <ion-icon name="exit-outline"></ion-icon> Déconnexion
+      </ion-item>
+      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-pae" id="main-content">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="menu" [routerLink]="['/accueil']">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-buttons>
+    <div class="en-Tete">
+     <p style="color:black"></p>
+    </div>
+    <ion-buttons slot="end" class="menu">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="container">
+    <!-- <p style="color:black" class="titre_categ">Le plus pertinent</p> -->
+    <div class="sponsor">
+      <!-- ................................... -->
+      <div class="annonces">
+        <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
+          <ion-icon name="heart-dislike" class="favoris"></ion-icon>
+        </div>
+        <div class="card-info">
+          <div  id="card-titre">
+            <p>Suzuki swift</p>
+            <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
+            <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
+            <p class="prix">10 900 ar</p>
+          </div>          
+        </div>
+      </div>
+      <!-- ................................... -->
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -38,6 +38,22 @@ const routes: Routes = [
   {
     path: 'my-annonce',
     loadChildren: () => import('./my-annonce/my-annonce.module').then( m => m.MyAnnoncePageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'favori',
+    loadChildren: () => import('./favori/favori.module').then( m => m.FavoriPageModule)
+  },
+  {
+    path: 'all-annonce',
+    loadChildren: () => import('./all-annonce/all-annonce.module').then( m => m.AllAnnoncePageModule)
+  },
+  {
+    path: 'details',
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   }
 ];
 @NgModule({

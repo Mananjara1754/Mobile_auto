@@ -1,0 +1,159 @@
+
+ion-toolbar{
+    --background: none;
+    background-color: #fff;
+    border: none;
+}
+#main-content{
+    overflow-y: scroll;
+}
+.en-Tete{
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    margin-top: 14px;
+}
+
+.menu{
+    width: 37px;
+    justify-content: center;
+    color: #1A1313;
+    // margin-left: 4%;
+}
+.menu ion-icon{
+    font-size: x-large;
+    color: #1A1313;
+}
+ion-menu-button{
+    font-size: x-large;
+    color: #1A1313;
+}
+ion-content{
+    --background:none;
+    background-color: #fff;
+    position: relative;
+}
+#bouton{
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: smaller;
+    width: 110px;
+}
+
+// ----Menu
+
+.menu-header-bg{
+    height: 180px;
+    width:350px;
+    background-color: black;
+    transform: rotate(15deg);
+    border-radius: 10px 10px 10px 50px;
+    margin-left: -18px;
+    margin-top:-50px;
+    margin-bottom:60px;
+}
+
+
+.menu-items{
+    margin: 0px;
+    background-color: transparent;
+    ion-icon{
+        margin-right: 20px;
+        color: #86919f;
+    }
+    ion-item{
+        padding-left: 20px;
+        margin-bottom: 10px;
+        --background: transparent;
+        color: #000;
+    }
+    // ion-item:active{
+    //     background-color: aliceblue;
+    // }
+}
+
+
+.sponsor{
+
+
+    padding: 12px 0;
+    }
+    
+    .sponsor .annonces{
+        width: 90%;
+        height: 375px;
+        // box-shadow:  5px 5px 5px #bebebe,
+        //          -5px -5px 5px #ffffff;
+    
+        display: inline-block;
+        margin-left: 8px;
+        white-space: normal;
+    }
+    @media screen and (min-width: 500px) {
+        .sponsor{
+            display: flex;
+        }
+        .sponsor .annonces{
+            width: 50%;
+            height: 365px;
+            box-shadow:  5px 5px 5px #bebebe,
+                     -5px -5px 5px #ffffff;
+            display: inline-block;
+            margin-left: 20px;
+            white-space: normal;
+        }
+    }
+    
+//......
+.card-img{
+    width: 100%;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;    
+}
+
+.card-info{
+    color: black;
+    padding: 0px 9px;
+    margin-top: 8px;
+}
+.card-info #card-titre{
+    font-size: medium;
+    font-weight: 100;
+}
+#card-footer{
+    color: black;
+    padding: 0px 20px;
+}
+
+.moteur{
+    font-size: x-small;
+    margin-top: -11px;
+    opacity: 0.7;
+}
+.info{
+    font-size: smaller;
+    opacity: 0.8;
+    margin-top: -10px;
+}
+.prix{
+    margin-top: -10px;
+    font-size: smaller;
+}
+.favoris{
+    float: right;
+    font-size: x-large;
+    color: red;
+}
+.card-img-pertinent{
+    width: 100%;
+    height: 226px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
