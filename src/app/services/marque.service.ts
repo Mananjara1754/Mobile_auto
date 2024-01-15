@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { VariableService } from './variable.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class MarqueService {
   marques:any[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private variableService:VariableService,private httpClient: HttpClient) {}
   async get_all_marque(): Promise<any[]> {
-    const url = 'https://devvoitures5backend-production.up.railway.app/marque';
+    const url = this.variableService.nom_domaine+'/marque';
     try {
       const response: any = await this.httpClient.get(url).toPromise();
       if (response && response.data) {

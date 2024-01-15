@@ -1,9 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 
-
-
-
 ion-toolbar{
     --background: none;
     background-color: white;
@@ -91,7 +88,7 @@ white-space: nowrap;
 padding: 12px 0;
 }
 
-.sponsor .annonces{
+.annonces{
     width: 90%;
     height: 375px;
     // box-shadow:  5px 5px 5px #bebebe,
@@ -102,7 +99,7 @@ padding: 12px 0;
     white-space: normal;
 }
 @media screen and (min-width: 500px) {
-    .sponsor .annonces{
+  .annonces{
         width: 50%;
         height: 365px;
         box-shadow:  5px 5px 5px #bebebe,

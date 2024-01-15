@@ -11,5 +11,4 @@ export class MyAnnoncePage implements OnInit {
 
   ngOnInit() {
   }
-
 }

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { VariableService } from './variable.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnnonceService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private variableService:VariableService,private httpClient: HttpClient) {}
 
   async get_all_annonce(): Promise<any[]> {
-    const url = 'https://devvoitures5backend-production.up.railway.app/annonce';
+    const url = this.variableService.nom_domaine+'/annonce';
     try {
       const response: any = await this.httpClient.get(url).toPromise();
       if (response && response.data) {

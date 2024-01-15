@@ -10,44 +10,43 @@
       <div class="contains">
         <h3>Inscription</h3>
         <br>
-        <form action="" class="row g-3 needs-validation" novalidate method="post">
+        <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()" action="" class="row g-3 needs-validation" novalidate method="post">
             <div>
-              <label for="yourUsername" class="form-label">Nom de l'utilisateur</label>
+              <label for="yourUsername" class="form-label">Nom</label>
               <div class="input-group has-validation">
-                <input type="text" name="utilisateur" class="form-control" id="yourUsername" required>
+                <input type="text" formControlName="email" class="form-control" id="yourUsername" required>
                 <div class="invalid-feedback">veuillez entrer votre Nom utilisateur.</div>
               </div>
             </div>
             <div>
               <label for="yourUsername" class="form-label">Prenom</label>
               <div class="input-group has-validation">
-                <input type="text" name="utilisateur" class="form-control" id="yourUsername" required>
-                <div class="invalid-feedback">veuillez entrer votre Nom utilisateur.</div>
+                <input type="text" formControlName="prenom" class="form-control" id="yourUsername" required>
+                <div class="invalid-feedback">veuillez entrer votre prenom.</div>
               </div>
             </div>
             <div>
               <label for="yourUsername" class="form-label">E-mail</label>
               <div class="input-group has-validation">
-                <input type="text" name="utilisateur" class="form-control" id="yourUsername" required>
-                <div class="invalid-feedback">veuillez entrer votre Nom utilisateur.</div>
+                <input type="text" formControlName="email" class="form-control" id="yourUsername" required>
+                <div class="invalid-feedback">veuillez entrer votre Email.</div>
               </div>
             </div>
             <div>
-              <label for="yourPassword" class="form-label">Mot de Passe</label>
-              <input type="password" name="mdp" class="form-control" id="yourPassword" required>
+              <label for="yourPassword"  class="form-label" >Mot de Passe</label>
+              <input type="password" formControlName="mdp" class="form-control" id="yourPassword" required>
               <div class="invalid-feedback">Veuillez entrer votre mot de passe</div>
             </div>
             <div>
-              <label for="yourPassword" class="form-label">Confirmation du mot de Passe</label>
-              <input type="password" name="mdp" class="form-control" id="yourPassword" required>
-              <div class="invalid-feedback">Veuillez entrer votre mot de passe</div>
+              <label for="confirmPassword" class="form-label">Confirmation du mot de Passe</label>
+              <input type="password" formControlName="validation" class="form-control" id="confirmPassword" required>
+              <div class="invalid-feedback">Veuillez valider votre mot de passe</div>
             </div>
             <div>
               <br>
               <input class="btn btn-primary w-100" type="submit" value="Se connecter" style="background-color: #1A1313;border:none;">
             </div>
         </form>
-        <!-- <a href="" [routerLink]="['/login']" class="btn btn-primary" id="log" style="background-color: #1A1313;">Login</a><br> -->
 
       </div>
     </div>
