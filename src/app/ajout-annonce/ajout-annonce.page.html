@@ -14,31 +14,59 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <form action="">
+    <div>
       <div id="input">
         <label for="yourUsername" class="form-label">Marque</label>
         <div class="input-group has-validation">
-          <select name="" id="" class="form-control">
-            <option value="">Audi</option>
-            <option value="">Subaru</option>
+          <select name="" id="" name="idMarque" [(ngModel)]="idMarque" class="form-control">
+            <ng-container *ngFor="let marque of marques">
+              <option value="{{marque.idMarque}}">{{marque.marque}}</option>
+            </ng-container>
           </select>
         </div>
       </div>
       <div id="input">
         <label for="yourUsername" class="form-label">Voiture</label>
         <div class="input-group has-validation">
-          <select name="" id="" class="form-control">
-            <option value="">raptor</option>
-            <option value="">Mustang</option>
+          <select name="" id="" class="form-control" [(ngModel)]="idVoiture">
+            <ng-container *ngFor="let voiture of voitures">
+              <option value="{{voiture.idVoiture}}" *ngIf="voiture.idMarque === idMarque">{{voiture.nomModele}}</option>
+            </ng-container>
           </select>
         </div>
       </div>
+      <div id="input">
+        <label for="yourUsername" class="form-label">Fiche technique</label>
+        <div class="input-group has-validation">
+          <select name="" id="" [(ngModel)]="ficheChoisi" class="form-control">
+            <ng-container *ngFor="let ficheTechnique of ficheTechniques">
+              <option value="{{ficheTechnique.idFicheTechnique}}" *ngIf="ficheTechnique.idVoiture === idVoiture">{{ficheTechnique.idFicheTechnique}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div><br>
+      
+        <ng-container *ngFor="let fiche of ficheTechniques">
+          <div style="border:0.2px solid rgb(221, 221, 221); color:black;padding: 10px;" *ngIf="fiche.idFicheTechnique === ficheChoisi">
+              <p>Energie : {{fiche.energie}} </p>
+              <p>Moteur : {{fiche.moteur}}</p>
+              <p>Boite de vitesse : {{fiche.boite}}</p>
+              <p>Litre du moteur : {{fiche.litreMoteur}}</p>
+              <p>Consommation : {{fiche.consommation}}</p>
+              <p>Puissance fiscale : {{fiche.puissance}} CV</p>
+              <p>Nombre de Vitesse : {{fiche.nbVitesse}}</p>
+              <p>Nombre de place : {{fiche.nbPlace}}</p>
+              <p>Nombre de porte : {{fiche.nbPorte}}</p>
+              <p>Longueur : {{fiche.longueur}} m</p>
+              <p>Poids : {{fiche.poids}} Kg</p>
+          </div>
+        </ng-container>
       <div class="row" id="input">
         <div class="col-6">
           <div>
             <label for="yourUsername" class="form-label">Kilométrage</label>
             <div class="input-group has-validation">
-              <input type="number" name="kilometrage"  class="form-control" id="">
+              <input type="number" name="" [(ngModel)]="kilometrage" class="form-control" id="">
             </div>
           </div>
         </div>
@@ -46,7 +74,7 @@
           <div>
             <label for="yourUsername" class="form-label">Etat sur 10</label>
             <div class="input-group has-validation">
-              <input type="number" name="kilometrage"  class="form-control" id="">
+              <input type="number"[(ngModel)]="etat"  class="form-control" id="">
             </div>
           </div>
         </div>
@@ -54,24 +82,25 @@
       <div id="input">
         <label for="yourUsername" class="form-label">Description</label>
         <div class="input-group has-validation">
-          <input type="texte" name="kilometrage"  class="form-control" id="">
+          <textarea type="texte" name="description" [(ngModel)]="description"  class="form-control" id=""></textarea>
         </div>
       </div>
       <div id="input">
         <label for="yourUsername" class="form-label">Prix de vente</label>
         <div class="input-group has-validation">
-          <input type="number" name="kilometrage"  class="form-control" id="">
+          <input type="number" name="prix_vente" [(ngModel)]="prix_vente"  class="form-control" id="">
         </div>
       </div>
       <div id="input">
         <label for="yourUsername" class="form-label">Photo</label>
         <div class="input-group has-validation">
-          <input type="file" style="font-size: small;" name="kilometrage"  class="form-control" id="">
+          <input type="file" style="font-size: small;"  class="form-control" id="">
         </div>
       </div>
       <br>
-      <input type="submit" value="Valider" class="btn btn-primary" id="bouton">
+      <input type="submit" value="Valider" (click)="insertAnnonce()" class="btn btn-primary" id="bouton">
 
-    </form>
+    </div>
+    <br>
   </div>
 </ion-content>

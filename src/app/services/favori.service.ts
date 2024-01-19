@@ -47,8 +47,15 @@ export class FavoriService {
   async isFavori2(idAnnonce: string,favoris:any[]): Promise<boolean> {
     try {
       const idUsers = this.variableService.getidUser();
-      console.log();
-      return favoris.some((favori) => favori.idAnnonce === idAnnonce && favori.idUsers === idUsers);
+      console.log('le voila '+favoris[0].idAnnonce);
+      for (let i=0;i<favoris.length;i++) {
+        console.log("huhu");
+        console.log('iDuser'+idUsers+'annonce:'+idAnnonce+'favoriIduser'+favoris[i].idUser+'favori annonce'+favoris[i].idAnnonce);
+        if(favoris[i].idAnnonce === idAnnonce){
+          return true;
+        }
+      }
+      //return favoris.some((favori) => favori.idAnnonce === idAnnonce && favori.idUsers === idUsers);
     } catch (error) {
       console.error('Erreur lors de la vérification des favoris', error);
     }
