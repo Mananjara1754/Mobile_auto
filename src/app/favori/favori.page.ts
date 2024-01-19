@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FavoriService } from '../services/favori.service';
 
 @Component({
   selector: 'app-favori',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favori.page.scss'],
 })
 export class FavoriPage implements OnInit {
-
-  constructor() { }
+  favoris:any[]=[];
+  idUser:any;
+  constructor(private favoriService:FavoriService) { }
 
   ngOnInit() {
+    this.all_marque();
   }
-
+  async all_marque() {
+    try {
+      this.favoris = await this.favoriService.get_all_favori();
+    } catch (error) {
+        console.error('Erreur lors de la récupération des marques', error);
+    }
+  }
+  
 }

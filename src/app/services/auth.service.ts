@@ -86,7 +86,6 @@ export class AuthService {
         const headers = new HttpHeaders({
           'Content-Type': 'application/json'
         });
-      
         try {
           const data: any = await this.http.post(url, body, { headers }).toPromise();
           await loading.dismiss();

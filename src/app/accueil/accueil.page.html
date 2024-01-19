@@ -78,6 +78,8 @@
   <!-- Marque -->
 <!-- Listee plus pertinent -->
   <div class="container">
+    <!-- page.component.html -->
+
     <p style="color:black" class="titre_categ">Le plus pertinent</p>
     <div class="sponsor">
       <ng-container *ngFor="let annonce of annonces">
@@ -86,10 +88,11 @@
           <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
           <div class="card-info">
             <div  id="card-titre">
-              <p>{{annonce.marque}} {{annonce.nomModele}}<ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
-              <p class="moteur">{{annonce.moteur}}</p>
-              <p class="info">{{annonce.anneeSortie}} | {{annonce.kilometrage}} km | {{annonce.boite}} | {{annonce.energie}} </p>
-              <p class="prix">{{annonce.prixVente}}</p>
+              <!-- <p>{{annonce.marque}} {{annonce.nomModele}}<ion-icon class="favoris" name="heart" [color]="(estDansFavoris(annonce.idAnnonce) | async) ? 'danger' : 'medium'"  (click)="onClickIcone(annonce.idAnnonce)"></ion-icon></p> -->
+              <p>{{annonce.details.marque}} {{annonce.details.nomModele}}<ion-icon class="favoris" [name]="annonce.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(annonce.details.idAnnonce,annonce.favoriStatus)"></ion-icon></p>
+              <p class="moteur">{{annonce.details.moteur}}</p>
+              <p class="info">{{annonce.details.anneeSortie}} | {{annonce.details.kilometrage}} km | {{annonce.details.boite}} | {{annonce.details.energie}} </p>
+              <p class="prix">{{annonce.details.prixVente}}</p>
             </div>          
           </div>
         </div>
@@ -104,31 +107,19 @@
   <p style="color:black" class="titre_categ">Recemment ajoutes</p>
   <div class="sponsor">
     <!-- ................................... -->
-    <div class="annonces">
+    <!-- <div class="annonces">
       <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
       <div class="card-info">
         <div  id="card-titre">
-          <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
+          <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone"></ion-icon></p>
           <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
           <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
           <p class="prix">10 900 ar</p>
         </div>          
       </div>
-    </div>
+    </div> -->
     <!-- ................................... -->
-    <!-- ................................... -->
-    <div class="annonces">
-      <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
-      <div class="card-info">
-        <div  id="card-titre">
-          <p>Suzuki swift <ion-icon class="favoris"  [name]="etatIcone" [style.color]="couleurIcone" (click)="onClickIcone()"></ion-icon></p>
-          <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
-          <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
-          <p class="prix">10 900 ar</p>
-        </div>          
-      </div>
-    </div>
-    <!-- ................................... -->
+    
   </div>
 </div>
 <!-- nouveau -->

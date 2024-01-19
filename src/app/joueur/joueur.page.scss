@@ -68,7 +68,7 @@ ion-content{
     transform: translate(-50%,-50%);
 
     --background:none;
-    background-image: url('../../assets/img/fond.svg');
+    // background-image: url('../../assets/img/fond.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left;
@@ -148,7 +148,6 @@ padding: 12px 0;
 .demande .image{
 height: 250px;
 --background:none;
-background-image: url('../../assets/img/demande.svg');
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;

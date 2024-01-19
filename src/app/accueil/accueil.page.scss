@@ -6,6 +6,11 @@ ion-toolbar{
     background-color: white;
     border: none;
 }
+/* Ajoutez cette classe CSS à votre fichier CSS */
+.favori {
+    color: red;
+  }
+  
 .en-Tete{
     width: 100%;
     text-align: left;
@@ -109,23 +114,23 @@ padding: 12px 0;
         white-space: normal;
     }
 }
-.demande{
-    height: 600px;
-    text-align: center;
-}
-.demande .image{
-height: 250px;
---background:none;
-background-image: url('../../assets/img/demande.svg');
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
+// .demande{
+//     height: 600px;
+//     text-align: center;
+// }
+// .demande .image{
+// height: 250px;
+// --background:none;
+// background-image: url('../../assets/img/demande.svg');
+// background-repeat: no-repeat;
+// background-size: cover;
+// background-position: center;
 
- }
- .demande .text{
-    color: black;
-    // padding: 20px 0px;
- }
+//  }
+//  .demande .text{
+//     color: black;
+//     // padding: 20px 0px;
+//  }
  .footer{
     background-color: #1E2059;
     height: 150px;

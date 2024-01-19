@@ -10,9 +10,11 @@ export class AnnonceService {
   constructor(private variableService:VariableService,private httpClient: HttpClient) {}
 
   async get_all_annonce(): Promise<any[]> {
-    const url = this.variableService.nom_domaine+'/annonce';
+    const url = this.variableService.nom_domaine+'/annonce/valider';
     try {
-      const response: any = await this.httpClient.get(url).toPromise();
+      const headers = this.variableService.getHeaderToken();
+      //console.log(headers);
+      const response: any = await this.httpClient.get(url,{headers}).toPromise();
       if (response && response.data) {
         return response.data;
       } else {

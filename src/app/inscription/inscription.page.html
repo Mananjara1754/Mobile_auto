@@ -10,41 +10,41 @@
       <div class="contains">
         <h3>Inscription</h3>
         <br>
-        <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()" action="" class="row g-3 needs-validation" novalidate method="post">
+        <form action="" class="row g-3 needs-validation" novalidate method="post">
             <div>
               <label for="yourUsername" class="form-label">Nom</label>
               <div class="input-group has-validation">
-                <input type="text" formControlName="email" class="form-control" id="yourUsername" required>
+                <input type="text" [(ngModel)]="nom" name="nom" class="form-control" required>
                 <div class="invalid-feedback">veuillez entrer votre Nom utilisateur.</div>
               </div>
             </div>
             <div>
               <label for="yourUsername" class="form-label">Prenom</label>
               <div class="input-group has-validation">
-                <input type="text" formControlName="prenom" class="form-control" id="yourUsername" required>
+                <input type="text" [(ngModel)]="prenom" name="prenom" class="form-control" required>
                 <div class="invalid-feedback">veuillez entrer votre prenom.</div>
               </div>
             </div>
             <div>
               <label for="yourUsername" class="form-label">E-mail</label>
               <div class="input-group has-validation">
-                <input type="text" formControlName="email" class="form-control" id="yourUsername" required>
+                <input type="text" [(ngModel)]="email" name="email" class="form-control" required>
                 <div class="invalid-feedback">veuillez entrer votre Email.</div>
               </div>
             </div>
             <div>
               <label for="yourPassword"  class="form-label" >Mot de Passe</label>
-              <input type="password" formControlName="mdp" class="form-control" id="yourPassword" required>
+              <input type="password" [(ngModel)]="mdp" name="mdp" class="form-control" id="yourPassword" required>
               <div class="invalid-feedback">Veuillez entrer votre mot de passe</div>
             </div>
             <div>
               <label for="confirmPassword" class="form-label">Confirmation du mot de Passe</label>
-              <input type="password" formControlName="validation" class="form-control" id="confirmPassword" required>
+              <input type="password" [(ngModel)]="validation" name="validation" class="form-control" id="confirmPassword" required>
               <div class="invalid-feedback">Veuillez valider votre mot de passe</div>
             </div>
             <div>
               <br>
-              <input class="btn btn-primary w-100" type="submit" value="Se connecter" style="background-color: #1A1313;border:none;">
+              <input class="btn btn-primary w-100" type="submit" (click)="onSubmit()" [disabled]="!(nom && prenom && mdp && validation && email)" value="Se connecter" style="background-color: #1A1313;border:none;">
             </div>
         </form>
 
