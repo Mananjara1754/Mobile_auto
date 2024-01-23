@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FavoriService } from '../services/favori.service';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-favori',
@@ -9,12 +10,18 @@ import { FavoriService } from '../services/favori.service';
 export class FavoriPage implements OnInit {
   favoris:any[]=[];
   idUser:any;
-  constructor(private favoriService:FavoriService) { }
-
-  ngOnInit() {
-    this.all_marque();
+  constructor(private loadingService: LoadingService,private favoriService:FavoriService) { }
+  doRefresh(event:any) {
+    this.loadingService.present();
+    this.ngOnInit();
+    event.target.complete();
+    this.loadingService.dismiss();
   }
-  async all_marque() {
+   
+  ngOnInit() {
+    this.all_fav();
+  }
+  async all_fav() {
     try {
       this.favoris = await this.favoriService.get_all_favori();
     } catch (error) {

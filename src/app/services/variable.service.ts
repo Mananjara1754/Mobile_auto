@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VariableService {
   nom_domaine:any="https://devvoitures5backend-production.up.railway.app";
-  constructor() { }
+  constructor(private router : Router) { }
 
   getidUser(){
     const json = localStorage.getItem('token');
@@ -30,6 +31,19 @@ export class VariableService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
+  }
+  deconnecter() {
+    localStorage.clear();
+    this.router.navigate(['/debut']);
+  }
+  checkError(error:any){
+    if (error instanceof HttpErrorResponse) {
+      const errorValue = error.status;
+      console.log(errorValue);
+      if(errorValue === 500){
+        this.deconnecter();
+      }
+    }
   }
   
 }

@@ -7,6 +7,9 @@ import { AnnonceService } from '../services/annonce.service';
 import { FavoriService } from '../services/favori.service';
 import { BehaviorSubject } from 'rxjs';
 import { VariableService } from '../services/variable.service';
+import { AlertController, RefresherEventDetail } from '@ionic/angular';
+import { IonRefresherContent } from '@ionic/angular';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-accueil',
@@ -18,15 +21,19 @@ export class AccueilPage implements OnInit {
   marques:any[]=[];
   annonces:any[]=[];
   favoris:any[]=[];
-  // favorisSubject: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
+  recherche_value: string = '';
 
-   selectedReaction: string | null = null;
-
-  constructor(private variableService:VariableService,private router : Router,private favoriService:FavoriService,private marqueService:MarqueService,private annonceService:AnnonceService) {
-    this.all_marque();
-    this.all_annonce();
-     this.all_favori();
+  constructor(private alertController: AlertController,private loadingService: LoadingService,private variableService:VariableService,private router : Router,private favoriService:FavoriService,private marqueService:MarqueService,private annonceService:AnnonceService) {
+    
   }
+//https://github.com/hasinjara/dev_voiture_s5_backend/tree/main/src/main/java/com/demo/voiture/controller
+  doRefresh(event:any) {
+    this.loadingService.present();
+    this.ngOnInit();
+    event.target.complete();
+    this.loadingService.dismiss();
+  }
+   
   async onClickIcone(annonce: any,okey:boolean) {
     try {
      if(okey == true){
@@ -51,7 +58,9 @@ export class AccueilPage implements OnInit {
 
   
   ngOnInit() {
-
+    this.all_marque();
+    this.all_annonce();
+    this.all_favori();
   }
   
   async all_marque() {
@@ -82,15 +91,13 @@ export class AccueilPage implements OnInit {
   }
   
   vers_detail(value:any){
-    this.router.navigate(['/joueur'], {
+    this.router.navigate(['/details'], {
       queryParams: { value: value }
     });
   }
   
   deconnecter() {
-    localStorage.removeItem('utilisateur');
-    localStorage.clear();
-    this.router.navigate(['/debut']);
+   this.variableService.deconnecter();
   }
 
   validerAnnonce(keyAnnonce: string){

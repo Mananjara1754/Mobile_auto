@@ -15,10 +15,7 @@ const routes: Routes = [
     path: 'recherche',
     loadChildren: () => import('./recherche/recherche.module').then( m => m.RecherchePageModule)
   },
-  {
-    path: 'joueur',
-    loadChildren: () => import('./joueur/joueur.module').then( m => m.JoueurPageModule)
-  },
+ 
   {
     path: 'debut',
     loadChildren: () => import('./debut/debut.module').then( m => m.DebutPageModule)

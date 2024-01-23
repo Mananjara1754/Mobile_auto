@@ -12,7 +12,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="container">
     <!-- <p style="color:black" class="titre_categ">Le plus pertinent</p> -->
     <div class="sponsor">
@@ -24,6 +26,7 @@
           </div>
           <div class="card-info">
             <div  id="card-titre">
+              <p style="opacity: 0.5;font-size: small;">{{favori.prenom}} {{favori.nom}}</p>
               <p>{{favori.marque}} {{favori.nomModele}}</p>
               <p class="moteur">{{favori.moteur}}</p>
               <p class="info">{{favori.anneeSortie}} | {{favori.kilometrage}} km | {{favori.boite}} | {{favori.energie}} </p>

@@ -8,6 +8,7 @@ import { AjoutAnnoncePageRoutingModule } from './ajout-annonce-routing.module';
 
 import { AjoutAnnoncePage } from './ajout-annonce.page';
 
+
 @NgModule({
   imports: [
     CommonModule,

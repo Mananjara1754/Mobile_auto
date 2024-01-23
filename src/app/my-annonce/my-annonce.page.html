@@ -12,51 +12,35 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div class="container">
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div>
     <!-- <p style="color:black" class="titre_categ">Le plus pertinent</p> -->
     <div class="sponsor">
-      <!-- ................................... -->
-      <div class="annonces">
-        <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
-          <div>
-            <button mat-button [matMenuTriggerFor]="menu" class="choix">Menu</button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>Vendu</button>
-              <button mat-menu-item>Modifier</button>
-            </mat-menu>
-          </div>
-        </div>
-        <div class="card-info">
-          <div  id="card-titre">
-            <p>Suzuki swift</p>
-            <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
-            <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
-            <p class="prix">10 900 ar</p>
-          </div>          
-        </div>
-      </div>
-      <!-- ................................... -->
-      <!-- ................................... -->
-      <div class="annonces">
-        <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
-          <div>
-            <button mat-button [matMenuTriggerFor]="menu" class="choix">Menu</button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>Vendu</button>
-              <button mat-menu-item>Modifier</button>
-            </mat-menu>
-          </div>
-        </div>
-        <div class="card-info">
-          <div  id="card-titre">
-            <p>Suzuki swift</p>
-            <p class="moteur">2.0 BLUEHDI 150 GT LINE</p>
-            <p class="info">2015 | 169 824 km | Automatique | Diesel</p>
-            <p class="prix">10 900 ar</p>
-          </div>          
-        </div>
-      </div>
-      <!-- ................................... -->
+          <ng-container *ngFor="let annonce of annonces">
+            <!-- ................................... -->
+            <div class="annonces">
+              <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
+                <div>
+                  <button mat-button [matMenuTriggerFor]="menu" class="choix">Menu</button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="vendu(annonce.details.idAnnonce)">Vendu</button>
+                    <button mat-menu-item>Modifier</button>
+                  </mat-menu>
+                </div>
+              </div>
+              <div class="card-info">
+                <div  id="card-titre">
+                  <p>{{annonce.details.marque}} {{annonce.details.nomModele}}</p>
+                  <p class="moteur">{{annonce.details.moteur}}</p>
+                  <p class="info">{{annonce.details.anneeSortie}} | {{annonce.details.kilometrage}} km | {{annonce.details.boite}} | {{annonce.details.energie}} </p>
+                  <p class="prix">{{annonce.details.prixVente}} Ar</p>
+                </div>          
+              </div>
+            </div>
+            <!-- ................................... -->
+          </ng-container>
     </div>
   </div>
 </ion-content>

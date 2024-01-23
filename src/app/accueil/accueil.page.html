@@ -6,6 +6,9 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-list lines="none" class="menu-items">
       <ion-item [routerLink]="['/accueil']">
         <ion-icon name="home-outline"></ion-icon> Accueil
@@ -13,27 +16,27 @@
       <ion-item  [routerLink]="['/ajout-annonce']">
         <ion-icon name="reader-outline"></ion-icon> Faire une annonce
       </ion-item>
+      <ion-item  [routerLink]="['/favori']">
+        <ion-icon name="heart-outline"></ion-icon> Favori
+      </ion-item>
       <ion-item  [routerLink]="['/my-annonce']">
         <ion-icon name="exit-outline"></ion-icon> Mes annonces
       </ion-item>
       <ion-item  [routerLink]="['/notification']">
         <ion-icon name="notifications-outline"></ion-icon> Notification
       </ion-item>
-      <ion-item  [routerLink]="['/favori']">
-        <ion-icon name="heart-outline"></ion-icon> Favori
-      </ion-item>
-      <ion-item  [routerLink]="['/recherche']">
-        <ion-icon name="search-outline"></ion-icon> Recherche
-      </ion-item>
+      
       <ion-item  (click)="deconnecter()">
         <ion-icon name="exit-outline"></ion-icon> Déconnexion
       </ion-item>
-      
     </ion-list>
   </ion-content>
 </ion-menu>
 
-<div class="ion-pae" id="main-content">
+<ion-content id="main-content">
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <div class="en-Tete">
@@ -52,6 +55,8 @@
   </ion-header>
 
   <div class="container" style="margin-top: 10px;">
+   
+    
     <div class="row">
       <div class="col-12">
         <ion-searchbar placeholder="Recherche"></ion-searchbar>
@@ -88,11 +93,11 @@
           <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
           <div class="card-info">
             <div  id="card-titre">
-              <!-- <p>{{annonce.marque}} {{annonce.nomModele}}<ion-icon class="favoris" name="heart" [color]="(estDansFavoris(annonce.idAnnonce) | async) ? 'danger' : 'medium'"  (click)="onClickIcone(annonce.idAnnonce)"></ion-icon></p> -->
+              <p style="opacity: 0.5;font-size: small;">{{annonce.details.prenom}} {{annonce.details.nom}}</p>
               <p>{{annonce.details.marque}} {{annonce.details.nomModele}}<ion-icon class="favoris" [name]="annonce.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(annonce.details.idAnnonce,annonce.favoriStatus)"></ion-icon></p>
               <p class="moteur">{{annonce.details.moteur}}</p>
               <p class="info">{{annonce.details.anneeSortie}} | {{annonce.details.kilometrage}} km | {{annonce.details.boite}} | {{annonce.details.energie}} </p>
-              <p class="prix">{{annonce.details.prixVente}}</p>
+              <p class="prix">{{annonce.details.prixVente}} Ar</p>
             </div>          
           </div>
         </div>
@@ -132,14 +137,14 @@
          Avec nous, chaque annonce est une opportunité sans frais cachés, simplement l'assurance d'une expérience transparente et réussie.</p>
       <div>
         <button id="bouton-footer" class="btn btn-primary"  [routerLink]="['/all-annonce']">Tous les annonces</button>
-        <button id="bouton-footer" style="margin-left: 5px;background-color:black;color:white;" class="btn btn-primary">Creer annonce</button>
+        <button id="bouton-footer"  [routerLink]="['/ajout-annonce']" style="margin-left: 5px;background-color:black;color:white;" class="btn btn-primary">Creer annonce</button>
       </div>
     </div>
   </div>
   <!-- Annonce le plus pertinent -->
 
 
-</div>
+</ion-content>
 
 
 

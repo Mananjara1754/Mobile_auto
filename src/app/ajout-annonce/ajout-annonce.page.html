@@ -13,6 +13,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="container">
     <div>
       <div id="input">
@@ -31,6 +34,16 @@
           <select name="" id="" class="form-control" [(ngModel)]="idVoiture">
             <ng-container *ngFor="let voiture of voitures">
               <option value="{{voiture.idVoiture}}" *ngIf="voiture.idMarque === idMarque">{{voiture.nomModele}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <div id="input">
+        <label for="yourUsername" class="form-label">Categorie</label>
+        <div class="input-group has-validation">
+          <select name="" id="" class="form-control" [(ngModel)]="idCategorie">
+            <ng-container *ngFor="let categorie of categories">
+              <option value="{{categorie.idcategorie}}" *ngIf="categorie.idVoiture === idVoiture">{{categorie.categorie}}</option>
             </ng-container>
           </select>
         </div>
@@ -94,7 +107,7 @@
       <div id="input">
         <label for="yourUsername" class="form-label">Photo</label>
         <div class="input-group has-validation">
-          <input type="file" style="font-size: small;"  class="form-control" id="">
+          <input type="file" style="font-size: small;" (change)="onFileSelected($event)" class="form-control" id="" multiple>
         </div>
       </div>
       <br>
