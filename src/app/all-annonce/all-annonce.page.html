@@ -34,7 +34,7 @@
             <p>{{annonce.details.marque}} {{annonce.details.nomModele}}<ion-icon class="favoris" [name]="annonce.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(annonce.details.idAnnonce,annonce.favoriStatus)"></ion-icon></p>
             <p class="moteur">{{annonce.details.moteur}}</p>
             <p class="info">{{annonce.details.anneeSortie}} | {{annonce.details.kilometrage}} km | {{annonce.details.boite}} | {{annonce.details.energie}} </p>
-            <p class="prix">{{annonce.details.prixVente}} Ar</p>
+            <p class="prix">{{annonce.details.prixVente | number}} Ar</p>
           </div>          
         </div>
       </div>

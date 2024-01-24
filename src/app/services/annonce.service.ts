@@ -20,6 +20,20 @@ export class AnnonceService {
         console.error('Erreur : ', error);
       }
   }
+  async get_annonce_by_id(idAnnonce:any): Promise<any[]> {
+    const url = this.variableService.nom_domaine+'/annonce/'+idAnnonce;
+    try {
+      const response: any = await this.httpClient.get(url).toPromise();
+      if (response && response.data) {
+        return response.data;
+      } else {
+        return [];
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des annonceby id', error);
+      return [];
+    }
+  }
   envoyerFormData(formData: any) {
     const url = this.variableService.nom_domaine+'/voiture_categorie';
     const token=this.variableService.getToken();
@@ -75,7 +89,6 @@ export class AnnonceService {
   }
   async get_all_voiture(): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/voiture/marque';
-    alert(url);
     try {
       const response: any = await this.httpClient.get(url).toPromise();
       if (response && response.data) {

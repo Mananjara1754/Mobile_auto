@@ -42,10 +42,10 @@
       <div class="en-Tete">
         <img src="../../assets/img/dark_logo.png" alt="">
       </div>
-      <ion-buttons slot="end" class="menu">
+      <ion-buttons slot="end" class="menu" [routerLink]="['/notification']">
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-buttons>
-      <ion-buttons slot="end" class="menu" style="margin-right: 10px;" [routerLink]="['/recherche']">
+      <ion-buttons slot="end" class="menu" style="margin-right: 10px;" [routerLink]="['/all-annonce']">
         <ion-icon name="search"></ion-icon>
       </ion-buttons>
       <ion-buttons slot="end" class="menu">
@@ -64,10 +64,10 @@
     </div>
   </div><br>
   <!-- Annonce le plus pertinent -->
-  <div class="annonce" (click)="vers_detail(50)">
+  <div class="annonce">
     <div class="card-img" style="border-image:fill 0 linear-gradient(#0001,#000);background-image: url('../../assets/img/fond.jpg');">
       <h3 class="rand">Voiture de plaisir</h3>
-      <button id="bouton" class="btn btn-primary">Voir detail</button>
+      <button id="bouton" class="btn btn-primary" (click)="vers_detail(50)">Voir detail</button>
     </div>
   </div>
   <!-- Annonce le plus pertinent -->
@@ -89,7 +89,7 @@
     <div class="sponsor">
       <ng-container *ngFor="let annonce of annonces">
         <!-- ................................... -->
-        <div class="annonces">
+        <div class="annonces" (click)="vers_detail(annonce.details.idAnnonce)">
           <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
           <div class="card-info">
             <div  id="card-titre">
@@ -97,7 +97,7 @@
               <p>{{annonce.details.marque}} {{annonce.details.nomModele}}<ion-icon class="favoris" [name]="annonce.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(annonce.details.idAnnonce,annonce.favoriStatus)"></ion-icon></p>
               <p class="moteur">{{annonce.details.moteur}}</p>
               <p class="info">{{annonce.details.anneeSortie}} | {{annonce.details.kilometrage}} km | {{annonce.details.boite}} | {{annonce.details.energie}} </p>
-              <p class="prix">{{annonce.details.prixVente}} Ar</p>
+              <p class="prix">{{annonce.details.prixVente | number}} Ar</p>
             </div>          
           </div>
         </div>

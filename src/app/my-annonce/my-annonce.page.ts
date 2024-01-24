@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnonceService } from '../services/annonce.service';
 import { LoadingService } from '../services/loading.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-annonce',
@@ -9,10 +10,17 @@ import { LoadingService } from '../services/loading.service';
 })
 export class MyAnnoncePage implements OnInit {
   annonces:any[]=[];
-  constructor(private loadingService:LoadingService,private annonceService:AnnonceService) { }
+  constructor(private loadingController:LoadingController,private loadingService:LoadingService,private annonceService:AnnonceService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.showLoading();
     this.get_my_annonce();
+  }
+  async showLoading() {
+    const loading = await this.loadingController.create({
+      duration: 2500, // Facultatif - durée en millisecondes, ajustez selon vos besoins
+    });
+    await loading.present();
   }
   doRefresh(event:any) {
     this.loadingService.present();

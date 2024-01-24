@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MarqueService } from '../services/marque.service';
 import { AnnonceService } from '../services/annonce.service';
 import { LoadingService } from '../services/loading.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ajout-annonce',
@@ -23,8 +24,14 @@ export class AjoutAnnoncePage implements OnInit {
   ficheTechniques:any[]=[];
   formData: FormData = new FormData();
   selectedFile: any;
-  constructor(private loadingService:LoadingService,private marqueService:MarqueService,private annonceService:AnnonceService) {
+  constructor(private loadingController:LoadingController,private loadingService:LoadingService,private marqueService:MarqueService,private annonceService:AnnonceService) {
     
+  }
+  async showLoading() {
+    const loading = await this.loadingController.create({
+      duration: 2500, // Facultatif - durée en millisecondes, ajustez selon vos besoins
+    });
+    await loading.present();
   }
   doRefresh(event:any) {
     this.loadingService.present();
@@ -54,12 +61,12 @@ export class AjoutAnnoncePage implements OnInit {
     this.formData.append('prixVente', String(this.prix_vente));
     
   }
-  ngOnInit() {
+  async ngOnInit() {
+    await this.showLoading();
     this.all_marque();
     this.get_all_voiture();
     this.all_fiche();
     this.all_categori();
-    
   }
   async all_categori() {
     try {

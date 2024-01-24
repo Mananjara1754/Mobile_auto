@@ -7,7 +7,7 @@ import { AnnonceService } from '../services/annonce.service';
 import { FavoriService } from '../services/favori.service';
 import { BehaviorSubject } from 'rxjs';
 import { VariableService } from '../services/variable.service';
-import { AlertController, RefresherEventDetail } from '@ionic/angular';
+import { AlertController, LoadingController, NavController, RefresherEventDetail } from '@ionic/angular';
 import { IonRefresherContent } from '@ionic/angular';
 import { LoadingService } from '../services/loading.service';
 
@@ -23,7 +23,7 @@ export class AccueilPage implements OnInit {
   favoris:any[]=[];
   recherche_value: string = '';
 
-  constructor(private alertController: AlertController,private loadingService: LoadingService,private variableService:VariableService,private router : Router,private favoriService:FavoriService,private marqueService:MarqueService,private annonceService:AnnonceService) {
+  constructor( private loadingController: LoadingController,private alertController: AlertController,private loadingService: LoadingService,private variableService:VariableService,private router : Router,private favoriService:FavoriService,private marqueService:MarqueService,private annonceService:AnnonceService) {
     
   }
 //https://github.com/hasinjara/dev_voiture_s5_backend/tree/main/src/main/java/com/demo/voiture/controller
@@ -33,6 +33,13 @@ export class AccueilPage implements OnInit {
     event.target.complete();
     this.loadingService.dismiss();
   }
+  async showLoading() {
+    const loading = await this.loadingController.create({
+      duration: 2500, // Facultatif - durée en millisecondes, ajustez selon vos besoins
+    });
+    await loading.present();
+  }
+  
    
   async onClickIcone(annonce: any,okey:boolean) {
     try {
@@ -57,7 +64,8 @@ export class AccueilPage implements OnInit {
   }
 
   
-  ngOnInit() {
+  async ngOnInit() {
+    await this.showLoading();
     this.all_marque();
     this.all_annonce();
     this.all_favori();
@@ -90,9 +98,10 @@ export class AccueilPage implements OnInit {
     }
   }
   
-  vers_detail(value:any){
+  async vers_detail(value:any){
+    await this.showLoading();
     this.router.navigate(['/details'], {
-      queryParams: { value: value }
+      queryParams: {value: value}
     });
   }
   

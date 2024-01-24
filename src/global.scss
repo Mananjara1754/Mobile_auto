@@ -32,3 +32,22 @@
 .error {
   color: red;
 }
+/* styles.scss */
+
+/* Fond blanc pour le composant de chargement */
+.loading-wrapper {
+  --background: white;
+}
+
+/* Spinner noir */
+.loading-spinner {
+  --color: black;
+}
+ion-refresher {
+  --background: white;
+}
+
+/* Spinner noir pour le composant ion-refresher */
+ion-refresher ion-refresher-content .refresher-pulling .refresher-refreshing {
+  --color: black;
+}

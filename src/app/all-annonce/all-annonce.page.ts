@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnnonceService } from '../services/annonce.service';
 import { FavoriService } from '../services/favori.service';
 import { LoadingService } from '../services/loading.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-all-annonce',
@@ -15,11 +16,18 @@ export class AllAnnoncePage implements OnInit {
   favoris:any[]=[];
   recherche_value:any;
 
-  constructor(private loadingService:LoadingService,private annonceService:AnnonceService,private favoriService:FavoriService) { }
+  constructor(private loadingController:LoadingController,private loadingService:LoadingService,private annonceService:AnnonceService,private favoriService:FavoriService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.showLoading();
     this.all_favori();
     this.all_annonce();
+  }
+  async showLoading() {
+    const loading = await this.loadingController.create({
+      duration: 2500, // Facultatif - durée en millisecondes, ajustez selon vos besoins
+    });
+    await loading.present();
   }
   async all_favori() {
     try {
