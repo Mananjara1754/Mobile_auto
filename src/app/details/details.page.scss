@@ -1,22 +1,29 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
 ion-toolbar{
     --background: none;
-    background-color: #fff;
+    background-color: white;
     border: none;
 }
-#main-content{
-    overflow-y: scroll;
-}
+/* Ajoutez cette classe CSS à votre fichier CSS */
+.favori {
+    color: red;
+  }
+  
 .en-Tete{
     width: 100%;
     text-align: center;
     background-color: #fff;
     margin-top: 14px;
 }
-
+.en-Tete img{
+    width: 83px;
+    margin-left: 20px;
+}
 .menu{
     width: 37px;
-    justify-content: center;
+    justify-content: right;
     color: #1A1313;
     // margin-left: 4%;
 }
@@ -31,14 +38,184 @@ ion-menu-button{
 ion-content{
     --background:none;
     background-color: #fff;
+    // width: 100%;
+    // margin: 0;
+    // padding: 0;
     position: relative;
+    
+}
+.categorie{
+    width: 500px;
+    border: outset;
+    height:100px;
+    overflow: auto;
+    white-space: nowrap;
+}
+.categorie mat-chip-listbox mat-chip{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    
+  }
+  
+  div.scrollmenu span {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 5px;
+    background-color: #fff;
+    color: black;
+    border: 0.1px solid #ccbebe;
+    font-weight: 100;
+  }
+  div.scrollmenu span:active{
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 5px;
+    background-color: #000;
+    color: #fff;
+    border: 0.1px solid #ccbebe;
+    font-weight: 100;
+  }
+  
+  div.scrollmenu a:hover {
+    background-color: #777;
+  }
+.sponsor{
+overflow: auto;
+white-space: nowrap;
+padding: 12px 0;
+}
+
+.annonces{
+    width: 90%;
+    height: 375px;
+    // box-shadow:  5px 5px 5px #bebebe,
+    //          -5px -5px 5px #ffffff;
+
+    display: inline-block;
+    margin-left: 8px;
+    white-space: normal;
+    background-position: center;
+    background-size: cover;
+}
+@media screen and (min-width: 500px) {
+  .annonces{
+        width: 50%;
+        height: 365px;
+        box-shadow:  5px 5px 5px #bebebe,
+                 -5px -5px 5px #ffffff;
+        display: inline-block;
+        margin-left: 20px;
+        white-space: normal;
+        background-position: center;
+    background-size: cover;
+    }
+}
+
+
+select option{
+    width: 100%;
+}
+//......
+
+
+.card-info{
+    color: black;
+    padding: 0px 9px;
+    margin-top: 8px;
+}
+.card-info #card-titre{
+    font-size: medium;
+    font-weight: 100;
+}
+#card-footer{
+    color: black;
+    padding: 0px 20px;
+}
+#input{
+    color: black;
+    background-color: white;
+    box-shadow: none;
+    border: 0.1px solid #e5e5e5;
+}
+  
+
+  
+  .options-icon {
+    color: black;
+  }
+  
+  .annonce{
+    width: 100%;
+    height: 260px;
+    display: inline-block;
+    white-space: normal;
+}
+.rand{
+    top: 205px;
+    position: relative;
+    font-family: 'Product-Sans-bold';
+    color: #fff;
+    // border-image:fill 0 linear-gradient(#0001,#000);
+    
 }
 #bouton{
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: #1A1313;
     border: none;
+    border-radius: 26px;
     font-size: smaller;
-    width: 110px;
+    width: 100px;
+    top: 225px;
+    position: relative;
+}
+#main-content{
+    overflow-y: scroll;
+}
+#categorie{
+    margin-top: 115px;
+    width: 100%;
+    border: none;
+}
+
+.card-img-pertinent{
+    width: 100%;
+    height: 226px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+#pertinent{
+    overflow: auto;
+    white-space: nowrap;
+    padding: 12px 0;
+}
+    
+
+#bouton-footer{
+    background-color: white;
+    color: #1A1313;
+    border: none;
+    border-radius: 26px;
+    font-size: smaller;
+    // width: 100px;
+    top: 66px;
+    position: relative;
+}
+.logo-blanc{
+    width: 43px;
+    position: relative;
+    top: 40px;
 }
 
 // ----Menu
@@ -54,106 +231,15 @@ ion-content{
     margin-bottom:60px;
 }
 
-
-.menu-items{
-    margin: 0px;
-    background-color: transparent;
-    ion-icon{
-        margin-right: 20px;
-        color: #86919f;
-    }
-    ion-item{
-        padding-left: 20px;
-        margin-bottom: 10px;
-        --background: transparent;
-        color: #000;
-    }
-    // ion-item:active{
-    //     background-color: aliceblue;
-    // }
-}
-
-
-.sponsor{
-
-
-    padding: 12px 0;
-    }
-    
-    .sponsor .annonces{
-        width: 90%;
-        height: 375px;
-        // box-shadow:  5px 5px 5px #bebebe,
-        //          -5px -5px 5px #ffffff;
-    
-        display: inline-block;
-        margin-left: 8px;
-        white-space: normal;
-    }
-    @media screen and (min-width: 500px) {
-        .sponsor{
-            display: flex;
-        }
-        .sponsor .annonces{
-            width: 50%;
-            height: 365px;
-            box-shadow:  5px 5px 5px #bebebe,
-                     -5px -5px 5px #ffffff;
-            display: inline-block;
-            margin-left: 20px;
-            white-space: normal;
-        }
-    }
-    
-//......
-.card-img{
-    width: 100%;
-    height: 350px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 20px;    
-}
-
-.card-info{
+.Details{
     color: black;
-    padding: 0px 9px;
-    margin-top: 8px;
 }
-.card-info #card-titre{
-    font-size: medium;
-    font-weight: 100;
-}
-#card-footer{
-    color: black;
-    padding: 0px 20px;
-}
-
-.moteur{
-    font-size: x-small;
-    margin-top: -11px;
-    opacity: 0.7;
-}
-.info{
-    font-size: smaller;
+.date{
     opacity: 0.8;
-    margin-top: -10px;
+    background-color: #dcdbdb;
+    width: fit-content;
+    padding: 5px 8px;
 }
-.prix{
-    margin-top: -10px;
+.title{
     font-size: smaller;
 }
-.favoris{
-    float: right;
-    font-size: x-large;
-    color: red;
-}
-.card-img-pertinent{
-    width: 100%;
-    height: 226px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-}
-

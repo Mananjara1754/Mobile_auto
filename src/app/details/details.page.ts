@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsPage implements OnInit {
   option:any;
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-  }
+    this.route.queryParams.subscribe(params => {
+      this.option = +params['value'];
+  })}
 
 }
+  
+
+
