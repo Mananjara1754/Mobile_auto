@@ -42,21 +42,21 @@ async xenvoyerFormData(formData: FormData): Promise<any> {
 
     // Configurez les en-têtes nécessaires, par exemple, le type de contenu et l'autorisation
     const headers = {
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data; boundary=---------------------------123456789012345678901234567890',
       'Authorization': `Bearer ${token}`
     };
-  // Convertir FormData en objet JavaScript
-  const formDataObject: any = {};
-  formData.forEach((value, key) => {
-    formDataObject[key] = value;
-  });
+  // // Convertir FormData en objet JavaScript
+  // const formDataObject: any = {};
+  // formData.forEach((value, key) => {
+  //   formDataObject[key] = value;
+  // });
 
-  // Afficher les éléments de l'objet
-  for (const key in formDataObject) {
-    if (formDataObject.hasOwnProperty(key)) {
-      console.log(key, formDataObject[key]);
-    }
-  }
+  // // Afficher les éléments de l'objet
+  // for (const key in formDataObject) {
+  //   if (formDataObject.hasOwnProperty(key)) {
+  //     console.log(key, formDataObject[key]);
+  //   }
+  // }
     // Utilisez Axios pour effectuer la requête POST
     const response = await axios.post(url, formData, { headers });
 
@@ -195,6 +195,25 @@ async xenvoyerFormData(formData: FormData): Promise<any> {
   }
   async get_all_annonce(): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/annonce/valider';
+    try {
+      console.log("kkokok");
+      const headers = this.variableService.getHeaderToken();
+      //console.log(headers);
+      const response: any = await this.httpClient.get(url,{headers}).toPromise();
+      
+      if (response && response.data) {
+        return response.data;
+      } else {
+        return [];
+      }
+    } catch (error) {
+      this.variableService.checkError(error);
+      console.error('Erreur lors de la récupération des annonces', error);
+      return [];
+  }
+  }
+  async get_all_annonce_min(): Promise<any[]> {
+    const url = this.variableService.nom_domaine+'/annonce/min';
     try {
       console.log("kkokok");
       const headers = this.variableService.getHeaderToken();

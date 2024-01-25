@@ -41,34 +41,33 @@ export class AjoutAnnoncePage implements OnInit {
   onFileSelected(event: any) {
     this.selectedFile = event.target.files;
   }
-  async insertAnnonce(){
-    // console.log(this.idMarque); 
-    // console.log(this.idVoiture); 
-    // console.log(this.ficheChoisi); 
-    // console.log(this.kilometrage); 
-    // console.log(this.etat); 
-    // console.log(this.description); 
-    // console.log(this.prix_vente); 
+  
+  async insertAnnonce() {
     const formData = new FormData();
-
-    
-    
-    // formData.append('idMarque', this.idMarque);
-    formData.append('idVoiture', this.idVoiture);
-    formData.append('idFicheTechnique', this.ficheChoisi);
-    formData.append('idCategorie', "CATEG6");
-    
-    formData.append('kilometrage', this.kilometrage);
-    formData.append('etatVoiture', this.etat);
-    formData.append('description', this.description);
-    formData.append('prixVente', this.prix_vente);
-    formData.append('photos', this.selectedFile);
-    
-    console.log(this.selectedFile);
+  
+    // Ajoutez chaque fichier individuellement
+    for (let i = 0; i < this.selectedFile.length; i++) {
+      formData.append('photos', this.selectedFile[i], this.selectedFile[i].name);
+    }
+  
+    formData.append('idVoiture', "V1");
+    formData.append('idFicheTechnique', "FT2");
+    formData.append('idCategorie', "CATEG1");
+    formData.append('kilometrage', "55");
+    formData.append('etatVoiture', "5");
+    formData.append('description', "this.description");
+    formData.append('prixVente', "12132");
+  
     console.log(formData);
-    await this.annonceService.envoyerFormData(formData);
-    console.log("Okey");
+  
+    try {
+      await this.annonceService.envoyerFormData(formData);
+      console.log("Okey");
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
   }
+  
   async ngOnInit() {
     await this.showLoading();
     this.all_marque();

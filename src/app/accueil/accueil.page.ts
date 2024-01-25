@@ -102,7 +102,7 @@ export class AccueilPage implements OnInit {
 
   async all_annonce() {
     try {
-      this.annonces = await this.annonceService.get_all_annonce();
+      this.annonces = await this.annonceService.get_all_annonce_min();
       // Initialisez la propriété favoriStatus pour chaque annonce
       this.annonces.forEach(annonce => this.isFavori2(annonce));
       console.log(this.annonces);

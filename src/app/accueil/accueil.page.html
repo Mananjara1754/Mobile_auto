@@ -114,7 +114,8 @@
     <ng-container *ngFor="let recemments of recemment">
       <!-- ................................... -->
       <div class="annonces">
-        <div class="card-img-pertinent" (click)="vers_detail(recemments.details.idAnnonce)" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+        <p>{{recemments.photo[0].urlPhoto}}</p>
+        <div class="card-img-pertinent" (click)="vers_detail(recemments.details.idAnnonce)" style="background-image: recemments.details.photo[0].urlPhoto;"></div>
         <div class="card-info">
           <div  id="card-titre">
             <p style="opacity: 0.5;font-size: small;">{{recemments.details.prenom}} {{recemments.details.nom}}</p>
