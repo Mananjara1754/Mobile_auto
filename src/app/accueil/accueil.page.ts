@@ -21,6 +21,7 @@ export class AccueilPage implements OnInit {
   marques:any[]=[];
   annonces:any[]=[];
   favoris:any[]=[];
+  recemment:any[]=[];
   recherche_value: string = '';
 
   constructor( private loadingController: LoadingController,private alertController: AlertController,private loadingService: LoadingService,private variableService:VariableService,private router : Router,private favoriService:FavoriService,private marqueService:MarqueService,private annonceService:AnnonceService) {
@@ -67,6 +68,7 @@ export class AccueilPage implements OnInit {
   async ngOnInit() {
     await this.showLoading();
     this.all_marque();
+    this.all_recemment();
     this.all_annonce();
     this.all_favori();
   }
@@ -87,6 +89,17 @@ export class AccueilPage implements OnInit {
         console.error('Erreur lors de la récupération des favoris', error);
     }
   }
+  async all_recemment() {
+    try {
+      this.recemment = await this.annonceService.get_all_annonce();
+      // Initialisez la propriété favoriStatus pour chaque annonce
+      this.recemment.forEach(annonce => this.isFavori2(annonce));
+      console.log(this.recemment);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des recemments ajoute', error);
+    }
+  }
+
   async all_annonce() {
     try {
       this.annonces = await this.annonceService.get_all_annonce();

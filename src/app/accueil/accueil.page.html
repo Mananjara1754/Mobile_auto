@@ -89,8 +89,8 @@
     <div class="sponsor">
       <ng-container *ngFor="let annonce of annonces">
         <!-- ................................... -->
-        <div class="annonces" (click)="vers_detail(annonce.details.idAnnonce)">
-          <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+        <div class="annonces">
+          <div class="card-img-pertinent" (click)="vers_detail(annonce.details.idAnnonce)" style="background-image: url('../../assets/img/inscription.jpg');"></div>
           <div class="card-info">
             <div  id="card-titre">
               <p style="opacity: 0.5;font-size: small;">{{annonce.details.prenom}} {{annonce.details.nom}}</p>
@@ -111,7 +111,22 @@
 <div class="container">
   <p style="color:black" class="titre_categ">Recemment ajoutes</p>
   <div class="sponsor">
-    
+    <ng-container *ngFor="let recemments of recemment">
+      <!-- ................................... -->
+      <div class="annonces">
+        <div class="card-img-pertinent" (click)="vers_detail(recemments.details.idAnnonce)" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+        <div class="card-info">
+          <div  id="card-titre">
+            <p style="opacity: 0.5;font-size: small;">{{recemments.details.prenom}} {{recemments.details.nom}}</p>
+            <p>{{recemments.details.marque}} {{recemments.details.nomModele}}<ion-icon class="favoris" [name]="recemments.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(recemments.details.idAnnonce,recemments.favoriStatus)"></ion-icon></p>
+            <p class="moteur">{{recemments.details.moteur}}</p>
+            <p class="info">{{recemments.details.anneeSortie}} | {{recemments.details.kilometrage}} km | {{recemments.details.boite}} | {{recemments.details.energie}} </p>
+            <p class="prix">{{recemments.details.prixVente | number}} Ar</p>
+          </div>          
+        </div>
+      </div>
+      <!-- ................................... -->
+    </ng-container>
   </div>
 </div>
 <!-- nouveau -->

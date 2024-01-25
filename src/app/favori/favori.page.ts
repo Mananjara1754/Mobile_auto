@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FavoriService } from '../services/favori.service';
 import { LoadingService } from '../services/loading.service';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favori',
@@ -11,13 +12,27 @@ import { LoadingController } from '@ionic/angular';
 export class FavoriPage implements OnInit {
   favoris:any[]=[];
   idUser:any;
-  constructor(private loadingController:LoadingController,private loadingService: LoadingService,private favoriService:FavoriService) { }
+  constructor(private router:Router,private loadingController:LoadingController,private loadingService: LoadingService,private favoriService:FavoriService) { }
   doRefresh(event:any) {
     this.loadingService.present();
     this.ngOnInit();
     event.target.complete();
     this.loadingService.dismiss();
   }
+  async deleteFavori(annonce:any){
+    try {
+      await this.favoriService.delete_favori(annonce);
+    } catch (error) {
+      alert("erreur lors de la suppression de l\' annonce");
+    }
+  }
+  async vers_detail(value:any){
+    await this.showLoading();
+    this.router.navigate(['/details'], {
+      queryParams: {value: value}
+    });
+  }
+  
   async showLoading() {
     const loading = await this.loadingController.create({
       duration: 2500, // Facultatif - durée en millisecondes, ajustez selon vos besoins

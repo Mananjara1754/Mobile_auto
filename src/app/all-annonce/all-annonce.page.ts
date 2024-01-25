@@ -3,6 +3,7 @@ import { AnnonceService } from '../services/annonce.service';
 import { FavoriService } from '../services/favori.service';
 import { LoadingService } from '../services/loading.service';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-annonce',
@@ -16,7 +17,7 @@ export class AllAnnoncePage implements OnInit {
   favoris:any[]=[];
   recherche_value:any;
 
-  constructor(private loadingController:LoadingController,private loadingService:LoadingService,private annonceService:AnnonceService,private favoriService:FavoriService) { }
+  constructor(private router:Router,private loadingController:LoadingController,private loadingService:LoadingService,private annonceService:AnnonceService,private favoriService:FavoriService) { }
 
   async ngOnInit() {
     await this.showLoading();
@@ -28,6 +29,12 @@ export class AllAnnoncePage implements OnInit {
       duration: 2500, // Facultatif - durée en millisecondes, ajustez selon vos besoins
     });
     await loading.present();
+  }
+  async vers_detail(value:any){
+    await this.showLoading();
+    this.router.navigate(['/details'], {
+      queryParams: {value: value}
+    });
   }
   async all_favori() {
     try {

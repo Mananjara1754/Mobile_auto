@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { VariableService } from './variable.service';
-
+import axios from 'axios';
 @Injectable({
   providedIn: 'root'
 })
@@ -34,15 +34,107 @@ export class AnnonceService {
       return [];
     }
   }
-  envoyerFormData(formData: any) {
-    const url = this.variableService.nom_domaine+'/voiture_categorie';
-    const token=this.variableService.getToken();
-    const headers = new HttpHeaders({
+
+async xenvoyerFormData(formData: FormData): Promise<any> {
+  try {
+    const url = this.variableService.nom_domaine + '/annonce';
+    const token = this.variableService.getToken();
+
+    // Configurez les en-têtes nécessaires, par exemple, le type de contenu et l'autorisation
+    const headers = {
       'Content-Type': 'multipart/form-data',
       'Authorization': `Bearer ${token}`
-    });
-    return this.httpClient.post(url, formData, { headers });
+    };
+  // Convertir FormData en objet JavaScript
+  const formDataObject: any = {};
+  formData.forEach((value, key) => {
+    formDataObject[key] = value;
+  });
+
+  // Afficher les éléments de l'objet
+  for (const key in formDataObject) {
+    if (formDataObject.hasOwnProperty(key)) {
+      console.log(key, formDataObject[key]);
+    }
   }
+    // Utilisez Axios pour effectuer la requête POST
+    const response = await axios.post(url, formData, { headers });
+
+    // Traitez la réponse
+    console.log('Réponse de l\'API : ', response.data);
+
+  } catch (error) {
+    console.error('Erreur : ', error);
+  }
+}
+  async xxenvoyerFormData(formData: FormData): Promise<any> {
+    try {
+      const url = this.variableService.nom_domaine + '/annonce';
+      const token = this.variableService.getToken();
+  
+      // Créez une nouvelle instance de XMLHttpRequest
+      const xhr = new XMLHttpRequest();
+  
+      // Configurez la requête
+      xhr.open('POST', url, true);
+      
+      // Ajoutez les en-têtes nécessaires, par exemple, le type de contenu et l'autorisation
+      xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+      xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+  
+      // Configurez une fonction de rappel pour gérer la réponse de la requête
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const responseData = JSON.parse(xhr.responseText);
+            console.log('Réponse de l\'API : ', responseData);
+          } else {
+            console.error('Erreur de la requête : ', xhr.status, xhr.statusText);
+          }
+        }
+      };
+  
+      // Envoyez la requête avec le FormData en tant que corps
+      xhr.send(formData);
+  
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+  
+  async envoyerFormData(formData: FormData):Promise<any> {
+
+    try{
+
+      const url = this.variableService.nom_domaine+'/annonce';
+      const token=this.variableService.getToken();
+      // 'Content-Type': 'multipart/form-data',
+
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });        
+       // Convertir FormData en objet JavaScript
+    const formDataObject: any = {};
+    formData.forEach((value, key) => {
+      formDataObject[key] = value;
+    });
+
+    // Afficher les éléments de l'objet
+    for (const key in formDataObject) {
+      if (formDataObject.hasOwnProperty(key)) {
+        console.log(key, formDataObject[key]);
+      }
+    }
+
+      const data: any = await this.httpClient.post(url, formData, { headers }).toPromise();
+      const errorValue = data.error;
+      console.log('Valeur de la propriété "error" : ', errorValue);
+      // this.router.navigate(['/login']);
+    }catch(error){
+      console.error('Erreur : ', error);
+    }
+  }
+
   async recherche(mot_cle:any): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/annonce/search/'+mot_cle;
     try {

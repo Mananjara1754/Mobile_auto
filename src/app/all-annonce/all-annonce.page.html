@@ -26,7 +26,7 @@
       <ng-container *ngFor="let annonce of annonces">
       <!-- ................................... -->
       <div class="annonces">
-        <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
+        <div class="card-img-pertinent" (click)="vers_detail(annonce.details.idAnnonce)" style="background-image: url('../../assets/img/inscription.jpg');">
         </div>
         <div class="card-info">
           <div  id="card-titre">

@@ -22,7 +22,6 @@ export class AjoutAnnoncePage implements OnInit {
   marques:any[]=[];
   voitures:any[]=[];
   ficheTechniques:any[]=[];
-  formData: FormData = new FormData();
   selectedFile: any;
   constructor(private loadingController:LoadingController,private loadingService:LoadingService,private marqueService:MarqueService,private annonceService:AnnonceService) {
     
@@ -42,7 +41,7 @@ export class AjoutAnnoncePage implements OnInit {
   onFileSelected(event: any) {
     this.selectedFile = event.target.files;
   }
-  insertAnnonce(){
+  async insertAnnonce(){
     // console.log(this.idMarque); 
     // console.log(this.idVoiture); 
     // console.log(this.ficheChoisi); 
@@ -50,16 +49,25 @@ export class AjoutAnnoncePage implements OnInit {
     // console.log(this.etat); 
     // console.log(this.description); 
     // console.log(this.prix_vente); 
-    this.formData.append('idCategorie', this.idCategorie);
-    this.formData.append('photos', this.selectedFile);
-    this.formData.append('idMarque', this.idMarque);
-    this.formData.append('idVoiture', this.idVoiture);
-    this.formData.append('idFicheTechnique', this.ficheChoisi);
-    this.formData.append('kilometrage', String(this.kilometrage));
-    this.formData.append('etatVoiture', this.etat);
-    this.formData.append('description', this.description);
-    this.formData.append('prixVente', String(this.prix_vente));
+    const formData = new FormData();
+
     
+    
+    // formData.append('idMarque', this.idMarque);
+    formData.append('idVoiture', this.idVoiture);
+    formData.append('idFicheTechnique', this.ficheChoisi);
+    formData.append('idCategorie', "CATEG6");
+    
+    formData.append('kilometrage', this.kilometrage);
+    formData.append('etatVoiture', this.etat);
+    formData.append('description', this.description);
+    formData.append('prixVente', this.prix_vente);
+    formData.append('photos', this.selectedFile);
+    
+    console.log(this.selectedFile);
+    console.log(formData);
+    await this.annonceService.envoyerFormData(formData);
+    console.log("Okey");
   }
   async ngOnInit() {
     await this.showLoading();

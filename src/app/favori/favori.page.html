@@ -22,9 +22,9 @@
       <ng-container *ngFor="let favori of favoris">
         <div class="annonces">
           <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
-            <ion-icon name="heart-dislike" class="favoris"></ion-icon>
+            <ion-icon name="heart-dislike" class="favoris" (click)="deleteFavori(favori.idAnnonce)"></ion-icon>
           </div>
-          <div class="card-info">
+          <div class="card-info" (click)="vers_detail(favori.idAnnonce)">
             <div  id="card-titre">
               <p style="opacity: 0.5;font-size: small;">{{favori.prenom}} {{favori.nom}}</p>
               <p>{{favori.marque}} {{favori.nomModele}}</p>
