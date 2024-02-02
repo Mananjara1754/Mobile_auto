@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { VariableService } from './variable.service';
+import { LoadingController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriService {
 
-  constructor(private variableService:VariableService,private httpClient: HttpClient) { }
+  constructor(private loadingController: LoadingController,private variableService:VariableService,private httpClient: HttpClient) { }
 
   async get_all_favori(): Promise<any[]> {
     // const idUser = this.variableService.getidUser();
     const url = this.variableService.nom_domaine+'/favoris_user_annonce';
+    const loading = await this.loadingController.create();
+    await loading.present();
     try {
       const headers = this.variableService.getHeaderToken();
       const response: any = await this.httpClient.get(url,{headers}).toPromise();
+      await loading.dismiss();
       if (response && response.data) {
         return response.data;
       } else {
         return [];
       }
     } catch (error) {
+      await loading.dismiss();
       console.error('Erreur lors de la récupération des favoris', error);
     }
     return [];
@@ -44,6 +49,7 @@ export class FavoriService {
     }
     return false;
   }
+  
   async isFavori2(idAnnonce: string,favoris:any[]): Promise<boolean> {
     try {
       const idUsers = this.variableService.getidUser();

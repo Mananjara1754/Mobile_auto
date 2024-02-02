@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { VariableService } from './variable.service';
 import axios from 'axios';
+import { LoadingController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
 export class AnnonceService {
 
-  constructor(private variableService:VariableService,private httpClient: HttpClient) {}
+  constructor(private loadingController: LoadingController,private variableService:VariableService,private httpClient: HttpClient) {}
     async vendu(id_annonce:any) {
       try {
         const url = this.variableService.nom_domaine+"/annonce/vendre/"+id_annonce;
@@ -152,23 +153,27 @@ async xenvoyerFormData(formData: FormData): Promise<any> {
   
   async get_all_categorie(): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/voiture_categorie';
+    const loading = await this.loadingController.create();
+    await loading.present();
     try {
       const response: any = await this.httpClient.get(url).toPromise();
+      await loading.dismiss();
       if (response && response.data) {
         return response.data;
       } else {
         return [];
       }
     } catch (error) {
+      await loading.dismiss();
       console.error('Erreur lors de la récupération des categories par', error);
       return [];
     }
   }
+
   async get_all_fiche(): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/voiture/fiche_tech';
     try {
       const response: any = await this.httpClient.get(url).toPromise();
-      
       if (response && response.data) {
         return response.data;
       } else {
@@ -179,28 +184,35 @@ async xenvoyerFormData(formData: FormData): Promise<any> {
       return [];
     }
   }
+
   async get_all_voiture(): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/voiture/marque';
+    const loading = await this.loadingController.create();
+    await loading.present();
     try {
       const response: any = await this.httpClient.get(url).toPromise();
+      await loading.dismiss();
       if (response && response.data) {
         return response.data;
       } else {
         return [];
       }
     } catch (error) {
+      await loading.dismiss();
       console.error('Erreur lors de la récupération des voitures par', error);
       return [];
     }
   }
   async get_all_annonce(): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/annonce/valider';
+    const loading = await this.loadingController.create();
+    await loading.present();
     try {
       console.log("kkokok");
       const headers = this.variableService.getHeaderToken();
       //console.log(headers);
       const response: any = await this.httpClient.get(url,{headers}).toPromise();
-      
+      await loading.dismiss();
       if (response && response.data) {
         return response.data;
       } else {
@@ -209,17 +221,19 @@ async xenvoyerFormData(formData: FormData): Promise<any> {
     } catch (error) {
       this.variableService.checkError(error);
       console.error('Erreur lors de la récupération des annonces', error);
+      await loading.dismiss();
       return [];
   }
   }
   async get_all_annonce_min(): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/annonce/min';
+    const loading = await this.loadingController.create();
+    await loading.present();
     try {
       console.log("kkokok");
       const headers = this.variableService.getHeaderToken();
-      //console.log(headers);
       const response: any = await this.httpClient.get(url,{headers}).toPromise();
-      
+      await loading.dismiss();
       if (response && response.data) {
         return response.data;
       } else {
@@ -228,6 +242,7 @@ async xenvoyerFormData(formData: FormData): Promise<any> {
     } catch (error) {
       this.variableService.checkError(error);
       console.error('Erreur lors de la récupération des annonces', error);
+      await loading.dismiss();
       return [];
   }
   }

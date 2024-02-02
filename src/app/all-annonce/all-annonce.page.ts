@@ -20,7 +20,7 @@ export class AllAnnoncePage implements OnInit {
   constructor(private router:Router,private loadingController:LoadingController,private loadingService:LoadingService,private annonceService:AnnonceService,private favoriService:FavoriService) { }
 
   async ngOnInit() {
-    await this.showLoading();
+    //await this.showLoading();
     this.all_favori();
     this.all_annonce();
   }

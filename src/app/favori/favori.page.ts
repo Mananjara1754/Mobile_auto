@@ -27,7 +27,7 @@ export class FavoriPage implements OnInit {
     }
   }
   async vers_detail(value:any){
-    await this.showLoading();
+    //await this.showLoading();
     this.router.navigate(['/details'], {
       queryParams: {value: value}
     });
@@ -40,7 +40,7 @@ export class FavoriPage implements OnInit {
     await loading.present();
   }
   async ngOnInit() {
-    await this.showLoading();
+    //await this.showLoading();
     this.all_fav();
   }
   async all_fav() {

@@ -66,7 +66,7 @@ export class AccueilPage implements OnInit {
 
   
   async ngOnInit() {
-    await this.showLoading();
+    //await this.showLoading();
     this.all_marque();
     this.all_recemment();
     this.all_annonce();

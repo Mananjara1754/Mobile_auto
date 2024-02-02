@@ -1,0 +1,21 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDVyOXzMFfyOvlVNrxW2aIhFEgcO-YGluE",
+  authDomain: "notification-cloud-s5.firebaseapp.com",
+  projectId: "notification-cloud-s5",
+  storageBucket: "notification-cloud-s5.appspot.com",
+  messagingSenderId: "1091105700339",
+  appId: "1:1091105700339:web:b393b171aa7124ede57a86",
+  measurementId: "G-B6NJGCWQBZ"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

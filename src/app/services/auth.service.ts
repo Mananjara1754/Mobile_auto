@@ -20,22 +20,15 @@ export class AuthService {
         "mail": email,
         "mdp": mdp
       };
-      // Affichez l'indicateur de chargement
-      const loading = await this.loadingController.create({
-        duration: 5000 // Optionnel : spécifiez une durée maximale pour l'indicateur de chargement
-      });
+      const loading = await this.loadingController.create();
       await loading.present();
-      // Définissez les en-têtes si nécessaire
       const headers = new HttpHeaders({
         'Content-Type': 'application/json'
       });
       try {
-        // Effectuez la requête POST avec le corps et les en-têtes définis
         const data: any = await this.http.post(url, body, { headers }).toPromise();
         console.log('Réponse JSON : ', data);
-        // Masquez l'indicateur de chargement une fois la réponse reçue
         await loading.dismiss();
-        // Récupérez la valeur de la propriété "error" dans data
         const errorValue = data.error;
         console.log('Valeur de la propriété "error" : ', errorValue);
     
@@ -56,7 +49,6 @@ export class AuthService {
         this.router.navigate(['/accueil']);
       } catch (error) {
         console.error('Erreur : ', error);
-        // Masquez l'indicateur de chargement en cas d'erreur
         await loading.dismiss();
       }
     }
