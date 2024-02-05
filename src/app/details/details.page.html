@@ -14,13 +14,11 @@
 <ion-content [fullscreen]="true">
   <div class="container">
     <!-- page.component.html -->
-    <div class="sponsor">
-      <ng-container>
+    <div class="sponsor" *ngIf="annonces">
+      <ng-container *ngFor="let photo of annonces.photos">
         <!-- ................................... -->
-        <div class="annonces" style="background-image: url('../../assets/img/inscription.jpg');"></div>
-        <div class="annonces" style="background-image: url('../../assets/img/inscription.jpg');"></div>
-        <div class="annonces" style="background-image: url('../../assets/img/inscription.jpg');"></div>
-        <div class="annonces" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+        <div class="annonces" style="background-image: url('{{photo.urlPhoto}}');"></div>
+       
         <!-- ................................... -->
       </ng-container>
     </div>

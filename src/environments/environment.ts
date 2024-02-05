@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyDVyOXzMFfyOvlVNrxW2aIhFEgcO-YGluE",
+    authDomain: "notification-cloud-s5.firebaseapp.com",
+    projectId: "notification-cloud-s5",
+    storageBucket: "notification-cloud-s5.appspot.com",
+    messagingSenderId: "1091105700339",
+    appId: "1:1091105700339:web:400359e471ef15dfe57a86",
+    measurementId: "G-84XVC9Z38Q",
+  },
 };
 
 /*

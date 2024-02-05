@@ -20,12 +20,14 @@
         <ion-icon name="heart-outline"></ion-icon> Favori
       </ion-item>
       <ion-item  [routerLink]="['/my-annonce']">
-        <ion-icon name="exit-outline"></ion-icon> Mes annonces
+        <ion-icon name="documents-outline"></ion-icon> Mes annonces
       </ion-item>
       <ion-item  [routerLink]="['/notification']">
         <ion-icon name="notifications-outline"></ion-icon> Notification
       </ion-item>
-      
+      <ion-item  [routerLink]="['/all-annonce']">
+        <ion-icon name="megaphone-outline"></ion-icon> Tous les annonces
+      </ion-item>
       <ion-item  (click)="deconnecter()">
         <ion-icon name="exit-outline"></ion-icon> Déconnexion
       </ion-item>
@@ -64,10 +66,10 @@
     </div>
   </div><br>
   <!-- Annonce le plus pertinent -->
-  <div class="annonce">
-    <div class="card-img" style="border-image:fill 0 linear-gradient(#0001,#000);background-image: url('../../assets/img/fond.jpg');">
+  <div class="annonce" *ngIf="annonces.length !==0">
+    <div class="card-img" style="border-image:fill 0 linear-gradient(#0001,#000);background-image: url('{{annonces[0].photos[0].urlPhoto}}');">
       <h3 class="rand">Voiture de plaisir</h3>
-      <button id="bouton" class="btn btn-primary" (click)="vers_detail(50)">Voir detail</button>
+      <button id="bouton" class="btn btn-primary" (click)="vers_detail(annonces[0].details.idAnnonce)">Voir detail</button>
     </div>
   </div>
   <!-- Annonce le plus pertinent -->
@@ -90,7 +92,7 @@
       <ng-container *ngFor="let annonce of annonces">
         <!-- ................................... -->
         <div class="annonces">
-          <div class="card-img-pertinent" (click)="vers_detail(annonce.details.idAnnonce)" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+          <div class="card-img-pertinent" (click)="vers_detail(annonce.details.idAnnonce)" style="background-image: url('{{annonce.photos[0].urlPhoto}}');"></div>
           <div class="card-info">
             <div  id="card-titre">
               <p style="opacity: 0.5;font-size: small;">{{annonce.details.prenom}} {{annonce.details.nom}}</p>
@@ -115,9 +117,10 @@
       <!-- ................................... -->
       <div class="annonces">
         <!-- <p>{{recemments.photo[0].urlPhoto}}</p> -->
-        <div class="card-img-pertinent" (click)="vers_detail(recemments.details.idAnnonce)" style="background-image: url('../../assets/img/inscription.jpg');"></div>
+        <div class="card-img-pertinent" (click)="vers_detail(recemments.details.idAnnonce)" style="background-image: url('{{recemments.photos[0].urlPhoto}}');"></div>
         <div class="card-info">
           <div  id="card-titre">
+            <!-- <img src="" alt="" srcset=""> -->
             <p style="opacity: 0.5;font-size: small;">{{recemments.details.prenom}} {{recemments.details.nom}}</p>
             <p>{{recemments.details.marque}} {{recemments.details.nomModele}}<ion-icon class="favoris" [name]="recemments.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(recemments.details.idAnnonce,recemments.favoriStatus)"></ion-icon></p>
             <p class="moteur">{{recemments.details.moteur}}</p>

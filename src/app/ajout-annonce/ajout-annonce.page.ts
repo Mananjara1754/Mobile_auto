@@ -3,7 +3,7 @@ import { MarqueService } from '../services/marque.service';
 import { AnnonceService } from '../services/annonce.service';
 import { LoadingService } from '../services/loading.service';
 import { LoadingController } from '@ionic/angular';
-
+import Compressor from 'compressorjs';
 @Component({
   selector: 'app-ajout-annonce',
   templateUrl: './ajout-annonce.page.html',
@@ -40,23 +40,52 @@ export class AjoutAnnoncePage implements OnInit {
   }
   onFileSelected(event: any) {
     this.selectedFile = event.target.files;
+   }
+  //........................
+
+  async compressImages(): Promise<File[]> {
+    const compressedFiles: File[] = [];
+
+    for (let i = 0; i < this.selectedFile.length; i++) {
+      const compressedFile = await this.compressFile(this.selectedFile[i]);
+      compressedFiles.push(compressedFile);
+    }
+    return compressedFiles;
   }
+
+  async compressFile(file: File): Promise<File> {
+    return new Promise((resolve, reject) => {
+      new Compressor(file, {
+        quality: 0.8,
+        success(result: Blob) {
+          const compressedFile = new File([result], file.name, { type: 'image/jpeg', lastModified: Date.now() });
+          resolve(compressedFile);
+        },
+        error(err: any) {
+          console.error('Erreur de compression :', err);
+          reject(err);
+        },
+      });
+    });
+  }
+  //........
   
   async insertAnnonce() {
+    const compressedFiles = await this.compressImages();
     const formData = new FormData();
   
     // Ajoutez chaque fichier individuellement
-    for (let i = 0; i < this.selectedFile.length; i++) {
-      formData.append('photos', this.selectedFile[i], this.selectedFile[i].name);
+    for (let i = 0; i < compressedFiles.length; i++) {
+      formData.append('photos', compressedFiles[i], compressedFiles[i].name);
     }
   
-    formData.append('idVoiture', "V1");
-    formData.append('idFicheTechnique', "FT2");
-    formData.append('idCategorie', "CATEG1");
-    formData.append('kilometrage', "55");
-    formData.append('etatVoiture', "5");
-    formData.append('description', "this.description");
-    formData.append('prixVente', "12132");
+    formData.append('idVoiture', this.idVoiture);
+    formData.append('idFicheTechnique', this.ficheChoisi);
+    formData.append('idCategorie', this.idCategorie);
+    formData.append('kilometrage', this.kilometrage);
+    formData.append('etatVoiture', this.etat);
+    formData.append('description', this.description);
+    formData.append('prixVente', this.prix_vente);
   
     console.log(formData);
   
@@ -75,6 +104,7 @@ export class AjoutAnnoncePage implements OnInit {
     this.all_fiche();
     this.all_categori();
   }
+
   async all_categori() {
     try {
         this.categories= await this.annonceService.get_all_categorie();

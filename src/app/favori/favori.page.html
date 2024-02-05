@@ -15,22 +15,22 @@
   <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <div class="container">
+  <div>
     <!-- <p style="color:black" class="titre_categ">Le plus pertinent</p> -->
     <div class="sponsor">
       <!-- ................................... -->
       <ng-container *ngFor="let favori of favoris">
         <div class="annonces">
-          <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
-            <ion-icon name="heart-dislike" class="favoris" (click)="deleteFavori(favori.idAnnonce)"></ion-icon>
+          <div class="card-img-pertinent" style="background-image: url('{{favori.photos[0].urlPhoto}}');">
+            <ion-icon name="heart-dislike" class="favoris" (click)="deleteFavori(favori.details.idAnnonce)"></ion-icon>
           </div>
           <div class="card-info" (click)="vers_detail(favori.idAnnonce)">
             <div  id="card-titre">
-              <p style="opacity: 0.5;font-size: small;">{{favori.prenom}} {{favori.nom}}</p>
-              <p>{{favori.marque}} {{favori.nomModele}}</p>
-              <p class="moteur">{{favori.moteur}}</p>
-              <p class="info">{{favori.anneeSortie}} | {{favori.kilometrage}} km | {{favori.boite}} | {{favori.energie}} </p>
-              <p class="prix">{{favori.prixVente | number}}</p>
+              <p style="opacity: 0.5;font-size: small;">{{favori.details.prenom}} {{favori.details.nom}}</p>
+              <p>{{favori.details.marque}} {{favori.details.nomModele}}</p>
+              <p class="moteur">{{favori.details.moteur}}</p>
+              <p class="info">{{favori.details.anneeSortie}} | {{favori.details.kilometrage}} km | {{favori.details.boite}} | {{favori.details.energie}} </p>
+              <p class="prix">{{favori.details.prixVente | number}}</p>
             </div>          
           </div>
         </div>

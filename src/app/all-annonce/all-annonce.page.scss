@@ -62,15 +62,21 @@ ion-content{
     @media screen and (min-width: 500px) {
         .sponsor{
             display: flex;
+            flex-wrap: wrap;
+            //display:grid;
+            //display: grid;
+            //grid-template-columns: 50%, 50%;
+            justify-content: center;
         }
         .sponsor .annonces{
-            width: 50%;
+            //min-width: 10rem;
+            width: 45%;
             height: 365px;
             box-shadow:  5px 5px 5px #bebebe,
                      -5px -5px 5px #ffffff;
-            display: inline-block;
-            margin-left: 20px;
-            white-space: normal;
+            box-sizing: border-box; 
+            margin-left: 10px;
+            margin-top: 10px;
         }
     }
     ion-searchbar {

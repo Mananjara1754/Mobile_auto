@@ -52,7 +52,7 @@ export class AuthService {
         await loading.dismiss();
       }
     }
-    async inscription(nom:string,prenom:string,email:string,mdp:string,validation:string) {
+    async inscription(nom:string,prenom:string,email:string,mdp:string,validation:string,firebase_token:any) {
       try{
         if (mdp !== validation) {
           const alert = await this.alertController.create({
@@ -69,7 +69,8 @@ export class AuthService {
           "nom": nom,
           "prenom": prenom,
           "mail": email,
-          "mdp": mdp
+          "mdp": mdp,
+          "firebase_token": firebase_token
         };
         const loading = await this.loadingController.create({
           duration: 5000 // Optionnel : spécifiez une durée maximale pour l'indicateur de chargement

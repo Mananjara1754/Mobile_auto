@@ -105,6 +105,7 @@ export class AccueilPage implements OnInit {
       this.annonces = await this.annonceService.get_all_annonce_min();
       // Initialisez la propriété favoriStatus pour chaque annonce
       this.annonces.forEach(annonce => this.isFavori2(annonce));
+      console.log("Vpoila L ");
       console.log(this.annonces);
     } catch (error) {
       console.error('Erreur lors de la récupération des annonces', error);

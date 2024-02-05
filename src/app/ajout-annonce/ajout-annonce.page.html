@@ -43,7 +43,7 @@
         <div class="input-group has-validation">
           <select name="" id="" class="form-control" [(ngModel)]="idCategorie">
             <ng-container *ngFor="let categorie of categories">
-              <option value="{{categorie.idcategorie}}" *ngIf="categorie.idVoiture === idVoiture">{{categorie.categorie}}</option>
+              <option value="{{categorie.idCategorie}}" *ngIf="categorie.idVoiture === idVoiture">{{categorie.categorie}}</option>
             </ng-container>
           </select>
         </div>
@@ -107,7 +107,7 @@
       <div id="input">
         <label for="yourUsername" class="form-label">Photo</label>
         <div class="input-group has-validation">
-          <input type="file" style="font-size: small;" (change)="onFileSelected($event)" class="form-control" id="" multiple>
+          <input type="file" style="font-size: small;" (change)="onFileSelected($event)" class="form-control" id="" accept="image/*" multiple>
         </div>
       </div>
       <br>
