@@ -16,10 +16,13 @@ export class InscriptionPage implements OnInit {
   email:any;
   token:any;
   constructor(private formBuilder: FormBuilder,private authService:AuthService) {
+    // this.addListeners();
+    // this.generateToken();
   }
 
   ngOnInit() {
-    this.addListeners();
+    //this.addListeners();
+    this.generateToken();
   }
 //...............
 
@@ -68,7 +71,8 @@ generateToken() {
       PushNotifications.addListener('registration', (token) => {
         console.log('Token ' + token.value);
         const deviceToken = token.value;
-        this.sendTokenToServer(deviceToken);
+        this.token = deviceToken;
+        //this.sendTokenToServer(deviceToken);
       });
 
       PushNotifications.addListener('registrationError', (error: RegistrationError) => {

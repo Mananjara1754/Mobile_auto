@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnnonceService } from '../services/annonce.service';
 import { LoadingService } from '../services/loading.service';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-annonce',
@@ -10,7 +11,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class MyAnnoncePage implements OnInit {
   annonces:any[]=[];
-  constructor(private loadingController:LoadingController,private loadingService:LoadingService,private annonceService:AnnonceService) { }
+  constructor(private router : Router,private loadingController:LoadingController,private loadingService:LoadingService,private annonceService:AnnonceService) { }
 
   async ngOnInit() {
     await this.showLoading();
@@ -37,9 +38,23 @@ export class MyAnnoncePage implements OnInit {
   }
   async vendu(idAnnonce:any){
     try {
-      this.annonceService.vendu(idAnnonce);
+      await this.annonceService.vendu(idAnnonce);
     } catch (error) {
       console.error("Tsy mety vendu",error);
     }
+  }
+  async supprimer(idAnnonce:any){
+    try {
+      await this.annonceService.supprimer(idAnnonce);
+    } catch (error) {
+      console.error("Tsy mety vendu",error);
+    }
+  }
+   
+  async vers_detail(value:any){
+    await this.showLoading();
+    this.router.navigate(['/details'], {
+      queryParams: {value: value}
+    });
   }
 }

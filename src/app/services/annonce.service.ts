@@ -3,24 +3,66 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angul
 import { VariableService } from './variable.service';
 import axios from 'axios';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AnnonceService {
 
-  constructor(private loadingController: LoadingController,private variableService:VariableService,private httpClient: HttpClient) {}
-    async vendu(id_annonce:any) {
-      try {
-        const url = this.variableService.nom_domaine+"/annonce/vendre/"+id_annonce;
-        const headers = this.variableService.getHeaderToken();
-        const data: any = await this.httpClient.put(url,{headers}).toPromise();
-        const errorValue = data.error;
-        console.log('Valeur de la propriété "error" : ', errorValue);
-        console.log("Success");
-      } catch (error) {
-        console.error('Erreur : ', error);
-      }
+  constructor(private router: Router,private loadingController: LoadingController,private variableService:VariableService,private httpClient: HttpClient) {}
+  async supprimer(id_annonce: any) {
+    const loading = await this.loadingController.create();
+    try {
+      await loading.present();
+      const url = this.variableService.nom_domaine + "/annonce/" + id_annonce;
+      const body = {
+        "idAnnonce": id_annonce
+      };
+      const token = this.variableService.getToken();
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers: headers,
+        body: body  // Ajouter le corps de la requête
+      };
+      const data: any = await this.httpClient.delete(url,options).toPromise();
+      await loading.dismiss();
+      const errorValue = data.error;
+      console.log('Valeur de la propriété "error" : ', errorValue);
+      console.log("Success");
+    } catch (error) {
+      await loading.dismiss();
+      console.error('Erreur : ', error);
+    }
   }
+  async vendu(id_annonce: any) {
+    const loading = await this.loadingController.create();
+    try {
+      await loading.present();
+      const url = this.variableService.nom_domaine + "/annonce/vendre/" + id_annonce;
+      const body = {
+        "idAnnonce": id_annonce
+      };
+      const token = this.variableService.getToken();
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers: headers,
+        body: body  // Ajouter le corps de la requête
+      };
+      const data: any = await this.httpClient.put(url, null, options).toPromise();
+      await loading.dismiss();
+      const errorValue = data.error;
+      console.log('Valeur de la propriété "error" : ', errorValue);
+      console.log("Success");
+    } catch (error) {
+      await loading.dismiss();
+      console.error('Erreur : ', error);
+    }
+  }
+  
   async get_annonce_by_id(idAnnonce:any): Promise<any[]> {
     const url = this.variableService.nom_domaine+'/annonce/'+idAnnonce;
     try {
@@ -35,103 +77,32 @@ export class AnnonceService {
       return [];
     }
   }
-
-async xenvoyerFormData(formData: FormData): Promise<any> {
-  try {
-    const url = this.variableService.nom_domaine + '/annonce';
-    const token = this.variableService.getToken();
-
-    // Configurez les en-têtes nécessaires, par exemple, le type de contenu et l'autorisation
-    const headers = {
-      'Content-Type': 'multipart/form-data; boundary=---------------------------123456789012345678901234567890',
-      'Authorization': `Bearer ${token}`
-    };
-  // // Convertir FormData en objet JavaScript
-  // const formDataObject: any = {};
-  // formData.forEach((value, key) => {
-  //   formDataObject[key] = value;
-  // });
-
-  // // Afficher les éléments de l'objet
-  // for (const key in formDataObject) {
-  //   if (formDataObject.hasOwnProperty(key)) {
-  //     console.log(key, formDataObject[key]);
-  //   }
-  // }
-    // Utilisez Axios pour effectuer la requête POST
-    const response = await axios.post(url, formData, { headers });
-
-    // Traitez la réponse
-    console.log('Réponse de l\'API : ', response.data);
-
-  } catch (error) {
-    console.error('Erreur : ', error);
-  }
-}
-  async xxenvoyerFormData(formData: FormData): Promise<any> {
-    try {
-      const url = this.variableService.nom_domaine + '/annonce';
-      const token = this.variableService.getToken();
-  
-      // Créez une nouvelle instance de XMLHttpRequest
-      const xhr = new XMLHttpRequest();
-  
-      // Configurez la requête
-      xhr.open('POST', url, true);
-      
-      // Ajoutez les en-têtes nécessaires, par exemple, le type de contenu et l'autorisation
-      xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-      xhr.setRequestHeader('Authorization', `Bearer ${token}`);
-  
-      // Configurez une fonction de rappel pour gérer la réponse de la requête
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            const responseData = JSON.parse(xhr.responseText);
-            console.log('Réponse de l\'API : ', responseData);
-          } else {
-            console.error('Erreur de la requête : ', xhr.status, xhr.statusText);
-          }
-        }
-      };
-  
-      // Envoyez la requête avec le FormData en tant que corps
-      xhr.send(formData);
-  
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
-  }
-  
+ 
   async envoyerFormData(formData: FormData):Promise<any> {
-
-    try{
-
-      const url = this.variableService.nom_domaine+'/annonce';
-      const token=this.variableService.getToken();
-      // 'Content-Type': 'multipart/form-data',
-
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      });        
-       // Convertir FormData en objet JavaScript
-    const formDataObject: any = {};
-    formData.forEach((value, key) => {
-      formDataObject[key] = value;
-    });
-
-    // Afficher les éléments de l'objet
-    for (const key in formDataObject) {
-      if (formDataObject.hasOwnProperty(key)) {
-        console.log(key, formDataObject[key]);
+      const loading = await this.loadingController.create();
+      await loading.present(); 
+      try{
+        const url = this.variableService.nom_domaine+'/annonce';
+        const token=this.variableService.getToken();
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`
+        });
+      const formDataObject: any = {};
+      formData.forEach((value, key) => {
+        formDataObject[key] = value;
+      });
+      for (const key in formDataObject) {
+        if (formDataObject.hasOwnProperty(key)) {
+          console.log(key, formDataObject[key]);
+        }
       }
-    }
-
       const data: any = await this.httpClient.post(url, formData, { headers }).toPromise();
+      await loading.dismiss();
       const errorValue = data.error;
       console.log('Valeur de la propriété "error" : ', errorValue);
-      // this.router.navigate(['/login']);
+      this.router.navigate(['/accueil']);
     }catch(error){
+      await loading.dismiss();
       console.error('Erreur : ', error);
     }
   }

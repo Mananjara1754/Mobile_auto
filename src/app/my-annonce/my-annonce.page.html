@@ -21,16 +21,16 @@
           <ng-container *ngFor="let annonce of annonces">
             <!-- ................................... -->
             <div class="annonces">
-              <div class="card-img-pertinent" style="background-image: url('../../assets/img/inscription.jpg');">
+              <div class="card-img-pertinent" style="background-image: url('{{annonce.photos[0].urlPhoto}}');">
                 <div>
                   <button mat-button [matMenuTriggerFor]="menu" class="choix">Menu</button>
                   <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)="vendu(annonce.details.idAnnonce)">Vendu</button>
-                    <button mat-menu-item>Modifier</button>
+                    <button mat-menu-item (click)="supprimer(annonce.details.idAnnonce)">Supprimer</button>
                   </mat-menu>
                 </div>
               </div>
-              <div class="card-info">
+              <div class="card-info" (click)="vers_detail(annonce.details.idAnnonce)">
                 <div  id="card-titre">
                   <p>{{annonce.details.marque}} {{annonce.details.nomModele}}</p>
                   <p class="moteur">{{annonce.details.moteur}}</p>

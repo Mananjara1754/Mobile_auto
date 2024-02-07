@@ -40,7 +40,6 @@ export class AccueilPage implements OnInit {
     });
     await loading.present();
   }
-  
    
   async onClickIcone(annonce: any,okey:boolean) {
     try {
