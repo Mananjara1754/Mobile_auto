@@ -53,18 +53,20 @@ export class AllAnnoncePage implements OnInit {
     this.ngOnInit();
     event.target.complete();
     this.loadingService.dismiss();
-  }
+  }  
+  
   async onClickIcone(annonce: any,okey:boolean) {
     try {
      if(okey == true){
-      this.favoriService.delete_favori(annonce);
+      annonce.favoriStatus = false;
+      this.favoriService.delete_favori(annonce.details.idAnnonce);
      }else{
-      this.favoriService.insert_favori(annonce);
+      annonce.favoriStatus = true;
+      this.favoriService.insert_favori(annonce.details.idAnnonce);
      }
     } catch (error) {
       console.error('Erreur lors de la gestion des favoris', error);
     }
-    
   }
 
   async all_annonce() {

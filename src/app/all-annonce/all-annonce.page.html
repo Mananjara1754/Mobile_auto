@@ -31,7 +31,7 @@
         <div class="card-info">
           <div  id="card-titre">
             <p style="opacity: 0.5;font-size: small;">{{annonce.details.prenom}} {{annonce.details.nom}}</p>
-            <p>{{annonce.details.marque}} {{annonce.details.nomModele}}<ion-icon class="favoris" [name]="annonce.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(annonce.details.idAnnonce,annonce.favoriStatus)"></ion-icon></p>
+            <p>{{annonce.details.marque}} {{annonce.details.nomModele}}<ion-icon class="favoris" [name]="annonce.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(annonce,annonce.favoriStatus)"></ion-icon></p>
             <p class="moteur">{{annonce.details.moteur}}</p>
             <p class="info">{{annonce.details.anneeSortie}} | {{annonce.details.kilometrage}} km | {{annonce.details.boite}} | {{annonce.details.energie}} </p>
             <p class="prix">{{annonce.details.prixVente | number}} Ar</p>

@@ -44,9 +44,11 @@ export class AccueilPage implements OnInit {
   async onClickIcone(annonce: any,okey:boolean) {
     try {
      if(okey == true){
-      this.favoriService.delete_favori(annonce);
+      annonce.favoriStatus = false;
+      this.favoriService.delete_favori(annonce.details.idAnnonce);
      }else{
-      this.favoriService.insert_favori(annonce);
+      annonce.favoriStatus = true;
+      this.favoriService.insert_favori(annonce.details.idAnnonce);
      }
     } catch (error) {
       console.error('Erreur lors de la gestion des favoris', error);
@@ -65,7 +67,6 @@ export class AccueilPage implements OnInit {
 
   
   async ngOnInit() {
-    //await this.showLoading();
     this.all_marque();
     this.all_recemment();
     this.all_annonce();
@@ -83,11 +84,13 @@ export class AccueilPage implements OnInit {
   async all_favori() {
     try {
         this.favoris = await this.favoriService.get_all_favori();
+        console.log("Voici les favoris : ");
         console.log(this.favoris);
     } catch (error) {
         console.error('Erreur lors de la récupération des favoris', error);
     }
   }
+
   async all_recemment() {
     try {
       this.recemment = await this.annonceService.get_all_annonce();
@@ -100,13 +103,16 @@ export class AccueilPage implements OnInit {
   }
 
   async all_annonce() {
+    const loading = await this.loadingController.create();
     try {
+      await loading.present();
       this.annonces = await this.annonceService.get_all_annonce_min();
-      // Initialisez la propriété favoriStatus pour chaque annonce
       this.annonces.forEach(annonce => this.isFavori2(annonce));
-      console.log("Vpoila L ");
+      console.log("Voila Les annonces avec favori ");
       console.log(this.annonces);
+      await loading.dismiss();
     } catch (error) {
+      await loading.dismiss();
       console.error('Erreur lors de la récupération des annonces', error);
     }
   }

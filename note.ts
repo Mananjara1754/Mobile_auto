@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'hackaiza-front-client',
+  appId: 'com.android.application',
+  appName: 'auto',
   webDir: 'www',
   server: {
     androidScheme: 'https'

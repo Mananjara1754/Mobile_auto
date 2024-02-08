@@ -52,16 +52,12 @@ export class FavoriService {
   
   async isFavori2(idAnnonce: string,favoris:any[]): Promise<boolean> {
     try {
-      const idUsers = this.variableService.getidUser();
-      console.log('le voila '+favoris[0].idAnnonce);
       for (let i=0;i<favoris.length;i++) {
         console.log("huhu");
-        console.log('iDuser'+idUsers+'annonce:'+idAnnonce+'favoriIduser'+favoris[i].idUser+'favori annonce'+favoris[i].idAnnonce);
-        if(favoris[i].idAnnonce === idAnnonce){
+        if(favoris[i].details.idAnnonce === idAnnonce){
           return true;
         }
       }
-      //return favoris.some((favori) => favori.idAnnonce === idAnnonce && favori.idUsers === idUsers);
     } catch (error) {
       console.error('Erreur lors de la vérification des favoris', error);
     }
@@ -70,8 +66,6 @@ export class FavoriService {
   
   async insert_favori(id_annonce:any) {
       try {
-        alert(id_annonce);
-        // const data: any = await this.http.post(url, body, { headers }).toPromise();
         const url = this.variableService.nom_domaine+"/favoris_user_annonce";
         const body = {
           "idAnnonce": id_annonce,
@@ -87,7 +81,6 @@ export class FavoriService {
   }
   async delete_favori(id_annonce:any) {
     try {
-      // const data: any = await this.http.post(url, body, { headers }).toPromise();
       const url = this.variableService.nom_domaine+"/favoris_user_annonce";
       const body = {
         "idAnnonce": id_annonce
@@ -95,7 +88,7 @@ export class FavoriService {
       const headers = this.variableService.getHeaderToken();
       const options = {
         headers: headers,
-        body: body  // If you need to include a body in the delete request
+        body: body  
       };
       const data: any = await this.httpClient.delete(url,options).toPromise();
       const errorValue = data.error;

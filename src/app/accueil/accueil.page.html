@@ -91,7 +91,7 @@
           <div class="card-info">
             <div  id="card-titre">
               <p style="opacity: 0.5;font-size: small;">{{annonce.details.prenom}} {{annonce.details.nom}}</p>
-              <p>{{annonce.details.marque}} {{annonce.details.nomModele}}<ion-icon class="favoris" [name]="annonce.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(annonce.details.idAnnonce,annonce.favoriStatus)"></ion-icon></p>
+              <p>{{annonce.details.marque}} {{annonce.details.nomModele}}<ion-icon class="favoris" [name]="annonce.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(annonce,annonce.favoriStatus)"></ion-icon></p>
               <p class="moteur">{{annonce.details.moteur}}</p>
               <p class="info">{{annonce.details.anneeSortie}} | {{annonce.details.kilometrage}} km | {{annonce.details.boite}} | {{annonce.details.energie}} </p>
               <p class="prix">{{annonce.details.prixVente | number}} Ar</p>
@@ -117,7 +117,7 @@
           <div  id="card-titre">
             <!-- <img src="" alt="" srcset=""> -->
             <p style="opacity: 0.5;font-size: small;">{{recemments.details.prenom}} {{recemments.details.nom}}</p>
-            <p>{{recemments.details.marque}} {{recemments.details.nomModele}}<ion-icon class="favoris" [name]="recemments.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(recemments.details.idAnnonce,recemments.favoriStatus)"></ion-icon></p>
+            <p>{{recemments.details.marque}} {{recemments.details.nomModele}}<ion-icon class="favoris" [name]="recemments.favoriStatus ? 'heart' : 'heart-outline'" (click)="onClickIcone(recemments,recemments.favoriStatus)"></ion-icon></p>
             <p class="moteur">{{recemments.details.moteur}}</p>
             <p class="info">{{recemments.details.anneeSortie}} | {{recemments.details.kilometrage}} km | {{recemments.details.boite}} | {{recemments.details.energie}} </p>
             <p class="prix">{{recemments.details.prixVente | number}} Ar</p>
@@ -134,8 +134,8 @@
    <div class="annonce">
     <div class="card-img" style="border-image:fill 0 linear-gradient(#0001,#000);background-image: url('../../assets/img/fond.jpg');">
       <img class="logo-blanc" src="../../assets/img/logo_simple_white.png" alt="">
-      <p class="pub">Annoncez en toute confiance sur notre plateforme, et le meilleur ? C 'est gratuit ! Démarrez votre aventure vers la vente ou l'achat de voitures sans tracas.
-         Avec nous, chaque annonce est une opportunité sans frais cachés, simplement l'assurance d'une expérience transparente et réussie.</p>
+      <p class="pub">Annoncez en toute confiance sur notre plateforme. Démarrez votre aventure vers la vente ou l'achat de voitures sans tracas.
+        Avec nous, chaque annonce est une opportunité à saisir, avec l'assurance d'une expérience transparente et réussie, sans frais cachés.</p>
       <div>
         <button id="bouton-footer" class="btn btn-primary"  [routerLink]="['/all-annonce']">Tous les annonces</button>
         <button id="bouton-footer"  [routerLink]="['/ajout-annonce']" style="margin-left: 5px;background-color:black;color:white;" class="btn btn-primary">Creer annonce</button>
