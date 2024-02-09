@@ -41,23 +41,23 @@ addListeners = async () =>{
     alert('Push notification action performed'+ notification.actionId+notification)
   });
 }
-async registerPushNotifications(){
-  let permStatus = await PushNotifications.checkPermissions();
-  alert(JSON.stringify(permStatus));
-  if (permStatus.receive === 'prompt' ) {
-    permStatus = await PushNotifications.requestPermissions();
-  }
-  if (permStatus.receive !== 'granted' ) {
-    alert('User denied permissions!');
-  }
-  if (permStatus.receive === 'granted' ) {
-    try{
-      await PushNotifications.register();
-    }catch(e){
-      alert(JSON.stringify(e));
-    }
-  }
-}
+// async registerPushNotifications(){
+//   let permStatus = await PushNotifications.checkPermissions();
+//   alert(JSON.stringify(permStatus));
+//   if (permStatus.receive === 'prompt' ) {
+//     permStatus = await PushNotifications.requestPermissions();
+//   }
+//   if (permStatus.receive !== 'granted' ) {
+//     alert('User denied permissions!');
+//   }
+//   if (permStatus.receive === 'granted' ) {
+//     try{
+//       await PushNotifications.register();
+//     }catch(e){
+//       alert(JSON.stringify(e));
+//     }
+//   }
+// }
 getDeliveredNotifications = async() => {
   const notificationList = await PushNotifications.getDeliveredNotifications();
   alert('delivered notifications' + JSON.stringify(notificationList));

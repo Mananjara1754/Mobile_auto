@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class VariableService {
-  nom_domaine:any="https://devvoitures5backend-production-a786.up.railway.app";
+  
+  nom_domaine:any="https://devvoitures5backend-production-3fed.up.railway.app";
   constructor(private router : Router) { }
 
   getidUser(){
@@ -14,6 +15,14 @@ export class VariableService {
     if(json != null){
       const k = JSON.parse(json);
       return k.data[0].idUser;
+    }
+    return null;
+  }
+  getNomUser(){
+    const json = localStorage.getItem('token');
+    if(json != null){
+      const k = JSON.parse(json);
+      return k.data[0].nom+" "+k.data[0].prenom;
     }
     return null;
   }

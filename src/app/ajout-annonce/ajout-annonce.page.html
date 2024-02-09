@@ -53,7 +53,7 @@
         <div class="input-group has-validation">
           <select name="" id="" [(ngModel)]="ficheChoisi" class="form-control">
             <ng-container *ngFor="let ficheTechnique of ficheTechniques">
-              <option value="{{ficheTechnique.idFicheTechnique}}" *ngIf="ficheTechnique.idVoiture === idVoiture">{{ficheTechnique.idFicheTechnique}}</option>
+              <option value="{{ficheTechnique.idFicheTechnique}}" *ngIf="ficheTechnique.idVoiture === idVoiture">{{ficheTechnique.moteur}}</option>
             </ng-container>
           </select>
         </div>

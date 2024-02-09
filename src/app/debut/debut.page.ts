@@ -14,12 +14,12 @@ export class DebutPage implements OnInit {
   }
   async registerPushNotifications(){
     let permStatus = await PushNotifications.checkPermissions();
-    alert(JSON.stringify(permStatus));
+    //alert(JSON.stringify(permStatus));
     if (permStatus.receive === 'prompt' ) {
       permStatus = await PushNotifications.requestPermissions();
     }
     if (permStatus.receive !== 'granted' ) {
-      alert('User denied permissions!');
+      //alert('User denied permissions!');
     }
     if (permStatus.receive === 'granted' ) {
       try{

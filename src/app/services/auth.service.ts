@@ -14,11 +14,12 @@ import { VariableService } from './variable.service';
 export class AuthService {
   constructor(private variableServcie:VariableService,private router: Router,private http: HttpClient,private loadingController: LoadingController, private alertController: AlertController) {
   }
-    async login(email:string,mdp:string) {
+    async login(email:string,mdp:string,token:string) {
       const url = this.variableServcie.nom_domaine+"/register/signin";
       const body = {
         "mail": email,
-        "mdp": mdp
+        "mdp": mdp,
+        "firebase_token":token
       };
       const loading = await this.loadingController.create();
       await loading.present();

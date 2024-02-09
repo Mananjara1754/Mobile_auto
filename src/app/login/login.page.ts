@@ -17,6 +17,7 @@ export class LoginPage implements OnInit {
   mdp:any;
   erreur:any;
   responseData: any;
+  token:any;
 
   constructor(private afMessaging: AngularFireMessaging,private fcmService: FcmService,private authService: AuthService,private formBuilder: FormBuilder) {
     // this.afMessaging.requestToken.subscribe(
@@ -38,44 +39,15 @@ export class LoginPage implements OnInit {
     const mdp = this.loginForm.value.mdp;
     console.log(email);
     console.log(mdp);
-    this.authService.login(email,mdp);
+    this.authService.login(email,mdp,this.token);
   }
   
 
   ngOnInit() {
-    //this.requestFcmPermission();
-    // this.generateToken();
-     this.addListeners();
-    // this.registerPushNotifications();
-    // this.fcmService.receiveMessages().subscribe((message) => {
-    //   console.log('Received message:', message);
-    // });
+    this.generateToken();
+    //this.addListeners();
+ 
   }
-  // requestFcmPermission() {
-  //   this.fcmService.requestPermission().subscribe(
-  //     (token: any) => {
-  //       // You can handle the token here if needed, but it's already logged in FcmService
-  //     },
-  //     (error: any) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-  // registerPushNotifications() {
-  //   this.fcmService.requestPermission().subscribe(
-  //     (token) => {
-  //       console.log('FCM Token:', token);
-  //     },
-  //     (error) => {
-  //       console.error('Error getting FCM token:', error);
-  //     }
-  //   );
-  // }
-
-  // getDeliveredNotifications() {
-  //   // Implement logic to get delivered notifications if needed
-  // }
-
   addListeners = async () =>{
     await PushNotifications.addListener('registration',token=>{
       alert('Registration token :'+token.value);
@@ -111,32 +83,62 @@ export class LoginPage implements OnInit {
     const notificationList = await PushNotifications.getDeliveredNotifications();
     alert('delivered notifications' + JSON.stringify(notificationList));
   }
-  generateToken() {
-    PushNotifications.checkPermissions().then(result => {
-      if (result.receive == 'granted') {
-        console.log('Register');
-        PushNotifications.register();
+  
+generateToken() {
+  PushNotifications.checkPermissions().then(result => {
+    if (result.receive == 'granted') {
+      console.log('Register');
+      PushNotifications.register();
 
-        PushNotifications.addListener('registration', (token) => {
-          console.log('Token ' + token.value);
-          const deviceToken = token.value;
-          this.sendTokenToServer(deviceToken);
-        });
+      PushNotifications.addListener('registration', (token) => {
+        console.log('Token ' + token.value);
+        const deviceToken = token.value;
+        this.token = deviceToken;
+        //alert(this.token);
+        //this.sendTokenToServer(deviceToken);
+      });
 
-        PushNotifications.addListener('registrationError', (error: RegistrationError) => {
-          console.error('Error on registration: ' + JSON.stringify(error));
-        });
+      PushNotifications.addListener('registrationError', (error: RegistrationError) => {
+        console.error('Error on registration: ' + JSON.stringify(error));
+      });
 
-        PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) => {
-          this.handleIncomingNotification(notification);
-        });
+      PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) => {
+        this.handleIncomingNotification(notification);
+      });
 
-        PushNotifications.addListener('pushNotificationActionPerformed', (action: ActionPerformed) => {
-          this.handleNotificationAction(action);
-        });
-      }
-    });
-  }
+      PushNotifications.addListener('pushNotificationActionPerformed', (action: ActionPerformed) => {
+        this.handleNotificationAction(action);
+      });
+    }
+  });
+}
+
+  // generateToken() {
+  //   PushNotifications.checkPermissions().then(result => {
+  //     if (result.receive == 'granted') {
+  //       console.log('Register');
+  //       PushNotifications.register();
+
+  //       PushNotifications.addListener('registration', (token) => {
+  //         console.log('Token ' + token.value);
+  //         const deviceToken = token.value;
+  //         this.sendTokenToServer(deviceToken);
+  //       });
+
+  //       PushNotifications.addListener('registrationError', (error: RegistrationError) => {
+  //         console.error('Error on registration: ' + JSON.stringify(error));
+  //       });
+
+  //       PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) => {
+  //         this.handleIncomingNotification(notification);
+  //       });
+
+  //       PushNotifications.addListener('pushNotificationActionPerformed', (action: ActionPerformed) => {
+  //         this.handleNotificationAction(action);
+  //       });
+  //     }
+  //   });
+  // }
 
   async sendTokenToServer(deviceToken: string) {
     try {

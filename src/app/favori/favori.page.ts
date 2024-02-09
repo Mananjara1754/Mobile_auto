@@ -27,18 +27,18 @@ export class FavoriPage implements OnInit {
     }
   }
   async vers_detail(value:any){
-    //await this.showLoading();
+    await this.showLoading();
     this.router.navigate(['/details'], {
       queryParams: {value: value}
     });
   }
   
-  // async showLoading() {
-  //   const loading = await this.loadingController.create({
-  //     duration: 2500, // Facultatif - durée en millisecondes, ajustez selon vos besoins
-  //   });
-  //   await loading.present();
-  // }
+  async showLoading() {
+    const loading = await this.loadingController.create({
+      duration: 2500, // Facultatif - durée en millisecondes, ajustez selon vos besoins
+    });
+    await loading.present();
+  }
   async ngOnInit() {
     //await this.showLoading();
     this.all_fav();

@@ -23,9 +23,10 @@ export class AccueilPage implements OnInit {
   favoris:any[]=[];
   recemment:any[]=[];
   recherche_value: string = '';
+  nom_user:any;
 
   constructor( private loadingController: LoadingController,private alertController: AlertController,private loadingService: LoadingService,private variableService:VariableService,private router : Router,private favoriService:FavoriService,private marqueService:MarqueService,private annonceService:AnnonceService) {
-    
+    this.nom_user = this.variableService.getNomUser();
   }
 //https://github.com/hasinjara/dev_voiture_s5_backend/tree/main/src/main/java/com/demo/voiture/controller
   doRefresh(event:any) {
